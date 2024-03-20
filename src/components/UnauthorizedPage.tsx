@@ -3,15 +3,11 @@ import Registration from "./Registration";
 import Authorization from "./Authorization";
 import LanguageSelect from "./LanguageSelect";
 
-function authorizeUser(e: FormEvent, params: Map<string, string>) {
-  console.log("authorize");
-  params.forEach((key, value) => {
-    console.log(`${key} : ${value}`);
-  });
-  e.preventDefault();
+interface Props {
+  setAuthorized: (e: boolean) => void;
 }
 
-const UnauthorizedPage = () => {
+const UnauthorizedPage = ({ setAuthorized }: Props) => {
   const [isRegistration, setRegistration] = useState(false);
 
   function registerUser(e: FormEvent, params: Map<string, string>) {
@@ -21,6 +17,15 @@ const UnauthorizedPage = () => {
     });
     e.preventDefault();
     if (true) setRegistration(false);
+  }
+
+  function authorizeUser(e: FormEvent, params: Map<string, string>) {
+    console.log("authorize");
+    params.forEach((key, value) => {
+      console.log(`${key} : ${value}`);
+    });
+    e.preventDefault();
+    if (true) setAuthorized(true);
   }
 
   return (
