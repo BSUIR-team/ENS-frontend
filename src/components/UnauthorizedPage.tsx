@@ -11,7 +11,7 @@ function authorizeUser(e: FormEvent, params: Map<string, string>) {
   e.preventDefault();
 }
 
-const StartPage = () => {
+const UnauthorizedPage = () => {
   const [isRegistration, setRegistration] = useState(false);
 
   function registerUser(e: FormEvent, params: Map<string, string>) {
@@ -60,4 +60,4 @@ const StartPage = () => {
   );
 };
 
-export default StartPage;
+export default UnauthorizedPage;
