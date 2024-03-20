@@ -1,5 +1,7 @@
 import { FormEvent } from "react";
 import Input from "./Input";
+import "../i18n";
+import { useTranslation } from "react-i18next";
 
 interface Props {
   children?: string;
@@ -7,6 +9,7 @@ interface Props {
 }
 
 const Authorization = ({ children, onSubmit }: Props) => {
+  const [t] = useTranslation();
   var params = new Map<string, string>();
   return (
     <form
@@ -15,10 +18,12 @@ const Authorization = ({ children, onSubmit }: Props) => {
         onSubmit(e, params);
       }}
     >
-      <h1 style={{ textAlign: "center", margin: "10px 0" }}>Log In</h1>
+      <h1 style={{ textAlign: "center", margin: "10px 0" }}>
+        {t("authorizationHeader")}
+      </h1>
       <Input
         type="tel"
-        label="Phone number"
+        label={t("phoneNumber")}
         name="phoneInput"
         placeholder="+375291488228"
         onChange={(e) => {
@@ -27,9 +32,9 @@ const Authorization = ({ children, onSubmit }: Props) => {
       />
       <Input
         type="password"
-        label="Password"
+        label={t("password")}
         name="passwordInput"
-        placeholder="password"
+        placeholder={t("password")}
         onChange={(e) => {
           params.set(e.currentTarget.name, e.currentTarget.value);
         }}
@@ -39,7 +44,7 @@ const Authorization = ({ children, onSubmit }: Props) => {
         className="btn btn-warning"
         type="submit"
       >
-        Log In
+        {t("authorizeButton")}
       </button>
       {children}
     </form>

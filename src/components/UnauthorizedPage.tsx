@@ -2,6 +2,8 @@ import { FormEvent, useState } from "react";
 import Registration from "./Registration";
 import Authorization from "./Authorization";
 import LanguageSelect from "./LanguageSelect";
+import { useTranslation } from "react-i18next";
+import "../i18n";
 
 interface Props {
   setAuthorized: (e: boolean) => void;
@@ -9,6 +11,7 @@ interface Props {
 
 const UnauthorizedPage = ({ setAuthorized }: Props) => {
   const [isRegistration, setRegistration] = useState(false);
+  const [t, i18n] = useTranslation();
 
   function registerUser(e: FormEvent, params: Map<string, string>) {
     console.log("register");
@@ -44,7 +47,7 @@ const UnauthorizedPage = ({ setAuthorized }: Props) => {
         <Authorization onSubmit={authorizeUser} />
       )}
       <p style={{ textAlign: "center", margin: "10px 0" }}>
-        {isRegistration ? "Already have an account" : "Don't have an account? "}
+        {isRegistration ? t("accountAlreadyExists") : t("noAccountYet")}
         <a
           style={{ marginLeft: "5px" }}
           className="link-warning link-opacity-100-hover"
@@ -53,12 +56,12 @@ const UnauthorizedPage = ({ setAuthorized }: Props) => {
             setRegistration(!isRegistration);
           }}
         >
-          {isRegistration ? "Log In" : "Register"}
+          {isRegistration ? t("startAuthorization") : t("startRegistration")}
         </a>
       </p>
       <LanguageSelect
         onLanguageChange={(language) => {
-          console.log(language);
+          i18n.changeLanguage(language);
         }}
       ></LanguageSelect>
     </div>

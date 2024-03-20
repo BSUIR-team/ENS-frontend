@@ -1,5 +1,7 @@
 import { FormEvent } from "react";
 import Input from "./Input";
+import "../i18n";
+import { useTranslation } from "react-i18next";
 
 interface Props {
   children?: string;
@@ -7,8 +9,8 @@ interface Props {
 }
 
 const Registration = ({ children, onSubmit }: Props) => {
-  var params: Map<string, string>;
-  params = new Map<string, string>();
+  const [t] = useTranslation();
+  var params = new Map<string, string>();
   return (
     <form
       method="POST"
@@ -16,10 +18,12 @@ const Registration = ({ children, onSubmit }: Props) => {
         onSubmit(e, params);
       }}
     >
-      <h1 style={{ textAlign: "center", margin: "10px 0" }}>Registration</h1>
+      <h1 style={{ textAlign: "center", margin: "10px 0" }}>
+        {t("registrationHeader")}
+      </h1>
       <Input
         type="tel"
-        label="Phone number"
+        label={t("phoneNumber")}
         name="phoneInput"
         placeholder="+375291488228"
         onChange={(e) => {
@@ -28,7 +32,7 @@ const Registration = ({ children, onSubmit }: Props) => {
       />
       <Input
         type="email"
-        label="Email"
+        label={t("email")}
         name="emailInput"
         placeholder="johndoe@gmail.com"
         onChange={(e) => {
@@ -37,18 +41,18 @@ const Registration = ({ children, onSubmit }: Props) => {
       />
       <Input
         type="password"
-        label="Password"
+        label={t("password")}
         name="passwordInput"
-        placeholder="password"
+        placeholder={t("password")}
         onChange={(e) => {
           params.set(e.currentTarget.name, e.currentTarget.value);
         }}
       />
       <Input
         type="password"
-        label="Repeat password"
+        label={t("repeatPassword")}
         name="repeatPasswordInput"
-        placeholder="password"
+        placeholder={t("password")}
         onChange={(e) => {
           params.set(e.currentTarget.name, e.currentTarget.value);
         }}
@@ -58,7 +62,7 @@ const Registration = ({ children, onSubmit }: Props) => {
         className="btn btn-warning"
         type="submit"
       >
-        Register
+        {t("registerButton")}
       </button>
       {children}
     </form>
