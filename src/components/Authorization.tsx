@@ -15,7 +15,7 @@ const Authorization = ({ children, onSubmit }: Props) => {
         onSubmit(e, params);
       }}
     >
-      <h1 style={{ textAlign: "center", margin: "10px 0" }}>Registration</h1>
+      <h1 style={{ textAlign: "center", margin: "10px 0" }}>Log In</h1>
       <Input
         type="tel"
         label="Phone number"
