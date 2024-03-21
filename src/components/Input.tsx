@@ -4,10 +4,19 @@ interface Props {
   label: string;
   placeholder?: string;
   value?: string;
+  disabled?: boolean;
   onChange?: (e: React.FormEvent<HTMLInputElement>) => void;
 }
 
-const Input = ({ type, name, label, placeholder, value, onChange }: Props) => {
+const Input = ({
+  type,
+  name,
+  label,
+  placeholder,
+  value,
+  disabled,
+  onChange,
+}: Props) => {
   return (
     <label
       style={{ width: "90%", display: "block", margin: "5px auto" }}
@@ -21,6 +30,7 @@ const Input = ({ type, name, label, placeholder, value, onChange }: Props) => {
         name={name}
         placeholder={placeholder}
         value={value}
+        disabled={disabled}
         onChange={onChange}
       />
     </label>
