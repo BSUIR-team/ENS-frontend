@@ -3,9 +3,7 @@ import Input from "./Input";
 import { useTranslation } from "react-i18next";
 
 function addContact(e: FormEvent, params: Map<string, string>) {
-  params.forEach((key, value) => {
-    console.log(`${key} : ${value}`);
-  });
+  console.log(JSON.stringify(Object.fromEntries(params)));
   e.preventDefault();
 }
 

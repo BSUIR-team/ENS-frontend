@@ -22,6 +22,8 @@ const Translations = {
       editButton: "Изменить",
       saveButton: "Сохранить",
       messageSample: "Шаблон сообщения",
+      Russian: "Русский",
+      English: "Английский",
     },
   },
   en: {
@@ -47,6 +49,8 @@ const Translations = {
       editButton: "Edit",
       saveButton: "Save",
       messageSample: "Message Sample",
+      Russian: "Russian",
+      English: "English",
     },
   },
 };

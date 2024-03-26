@@ -1,3 +1,6 @@
+import { useState } from "react";
+import { useTranslation } from "react-i18next";
+
 interface Props {
   onLanguageChange: (language: Languages) => void;
 }
@@ -8,20 +11,24 @@ enum Languages {
 }
 
 const LanguageSelect = ({ onLanguageChange }: Props) => {
-  //const [t, i18n] = useTranslation();
-  //const [index, setIndex] = useState(0);
+  const [t, i18n] = useTranslation();
+  const [index, setIndex] = useState(i18n.language);
   return (
     <select
       className="form-select"
       id="languageSelect"
-      //value={index}
+      defaultValue={index}
       onChange={(e) => {
-        onLanguageChange(Languages[e.target.value as keyof typeof Languages]);
+        onLanguageChange(e.target.value as Languages);
+        setIndex(e.target.value);
       }}
     >
       {Object.keys(Languages).map((e) => {
-        //if (i18n.language == e) setIndex(index);
-        return <option key={e}>{e}</option>;
+        return (
+          <option value={Languages[e as keyof typeof Languages]} key={e}>
+            {t(e)}
+          </option>
+        );
       })}
     </select>
   );

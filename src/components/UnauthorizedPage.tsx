@@ -15,18 +15,14 @@ const UnauthorizedPage = ({ setAuthorized }: Props) => {
 
   function registerUser(e: FormEvent, params: Map<string, string>) {
     console.log("register");
-    params.forEach((key, value) => {
-      console.log(`${key} : ${value}`);
-    });
+    console.log(JSON.stringify(Object.fromEntries(params)));
     e.preventDefault();
     if (true) setRegistration(false);
   }
 
   function authorizeUser(e: FormEvent, params: Map<string, string>) {
     console.log("authorize");
-    params.forEach((key, value) => {
-      console.log(`${key} : ${value}`);
-    });
+    console.log(JSON.stringify(Object.fromEntries(params)));
     e.preventDefault();
     if (true) setAuthorized(true);
   }

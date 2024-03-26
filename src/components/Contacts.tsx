@@ -21,6 +21,7 @@ const Contacts = () => {
   const [t] = useTranslation();
   return (
     <ul>
+      <h2>{t("contactsButton")}</h2>
       {getContacts().map((contact) => (
         <li>
           <h2>{contact.name}</h2>

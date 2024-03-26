@@ -3,9 +3,7 @@ import Input from "./Input";
 import { useTranslation } from "react-i18next";
 
 function editPersonalInfo(e: FormEvent, params: Map<string, string>) {
-  params.forEach((key, value) => {
-    console.log(`${key} : ${value}`);
-  });
+  console.log(JSON.stringify(Object.fromEntries(params)));
   e.preventDefault();
 }
 
@@ -26,7 +24,7 @@ const PersonalInfo = () => {
         <Input
           type="tel"
           label={t("phoneNumber")}
-          name="phoneInput"
+          name="phone"
           placeholder="+375291488228"
           disabled={isDisabled}
           onChange={(e) => {
@@ -36,7 +34,7 @@ const PersonalInfo = () => {
         <Input
           type="email"
           label={t("email")}
-          name="emailInput"
+          name="email"
           placeholder="johndoe@gmail.com"
           disabled={isDisabled}
           onChange={(e) => {
@@ -46,7 +44,7 @@ const PersonalInfo = () => {
         <Input
           type="password"
           label={t("password")}
-          name="passwordInput"
+          name="password"
           placeholder={t("password")}
           disabled={isDisabled}
           onChange={(e) => {
@@ -57,7 +55,7 @@ const PersonalInfo = () => {
           <Input
             type="password"
             label={t("repeatPassword")}
-            name="repeatPasswordInput"
+            name="repeatPassword"
             placeholder={t("password")}
             disabled={isDisabled}
             onChange={(e) => {
@@ -67,7 +65,14 @@ const PersonalInfo = () => {
         )}
         <label>
           {t("messageSample")}
-          <textarea className="form-control" disabled={isDisabled}></textarea>
+          <textarea
+            className="form-control"
+            name="messageSample"
+            disabled={isDisabled}
+            onChange={(e) => {
+              params.set(e.currentTarget.name, e.currentTarget.value);
+            }}
+          ></textarea>
         </label>
         <button type="submit" className="btn btn-danger" disabled={isDisabled}>
           {t("saveButton")}

@@ -24,7 +24,7 @@ const Authorization = ({ children, onSubmit }: Props) => {
       <Input
         type="tel"
         label={t("phoneNumber")}
-        name="phoneInput"
+        name="phone"
         placeholder="+375291488228"
         onChange={(e) => {
           params.set(e.currentTarget.name, e.currentTarget.value);
@@ -33,7 +33,7 @@ const Authorization = ({ children, onSubmit }: Props) => {
       <Input
         type="password"
         label={t("password")}
-        name="passwordInput"
+        name="password"
         placeholder={t("password")}
         onChange={(e) => {
           params.set(e.currentTarget.name, e.currentTarget.value);
