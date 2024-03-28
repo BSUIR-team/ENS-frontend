@@ -1,0 +1,120 @@
+@import './button.scss';
+@import './input.scss';
+@import './variables.scss';
+
+@mixin form-controls($control-color, $control-width) {
+
+    width: 100%;
+
+    h2 {
+        font-size: $secondary-header-font-size;
+    }
+
+    button {
+        width: $control-width;
+    }
+
+    button:focus:enabled, button:hover:enabled {
+        background-color: #fff;
+        color: $control-color;
+    }
+
+    input {
+        border-width: $border-width;
+        border-style: solid;
+        width: 100%;
+    }
+
+    input:focus:enabled, input:hover:enabled {
+        border-color: $control-color;
+    }
+
+    button:disabled {
+        background-color: $passive-color;
+    }
+
+    label {
+        width: $control-width;
+        display: block;
+        font-size: $basic-font-size;
+    }
+}
+
+.start-form {
+    $controls-width: 90%;
+
+    h2 {
+        text-align: center;
+        margin: 10px 0;
+    }
+
+    button {
+        margin: 10px auto 5px;
+        background-color: $start-form-elements-color;
+        color: #fff;
+    }
+
+    input {
+        border-color: rgba($color: $passive-color, $alpha: 0);
+    }
+
+    label {
+        margin: 5px auto
+    }
+
+    @include form-controls($start-form-hover-color, $controls-width);
+}
+
+.add-contact-form {
+    padding: 20px 100px;
+
+    @include form-controls($primary-page-color, 100%);
+
+    button {
+        margin-top: 20px;
+    }
+
+    input {
+        border-color: $passive-color;
+    }
+}
+
+.personal-info-form {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    border: $border-width solid $passive-color;
+    border-radius: $border-radius;
+    padding: 20px 100px;
+    $controls-width: 80%;
+
+    button {
+        margin-top: 10px;
+    }
+
+    button:enabled {
+        background-color: $primary-page-color;
+    }
+
+    textarea {
+        font-size: $basic-font-size;
+        width: 100%;
+        border-radius: $border-radius;
+        outline: none;
+        box-sizing: border-box;
+        display: block;
+        border: $border-width solid $passive-color;
+        padding: $control-padding;
+        transition: $transition-time linear;
+    }
+
+    textarea:focus:enabled, textarea:hover:enabled {
+        border-color: $primary-page-color;
+    }
+
+    input {
+        border-color: $passive-color;
+    }
+
+    @include form-controls($primary-page-color, $controls-width);
+}

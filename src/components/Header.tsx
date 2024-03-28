@@ -7,8 +7,10 @@ interface Props {
 const Header = ({ children }: Props) => {
   return (
     <header>
-      <h1>Notification System</h1>
-      {children}
+      <div className="container">
+        <h1>Notification System</h1>
+        <div className="children">{children}</div>
+      </div>
     </header>
   );
 };

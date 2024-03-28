@@ -1,0 +1,12 @@
+@import './variables.scss';
+.language-select {
+    border-radius: $border-radius;
+    padding: $control-padding;
+    display: block;
+    box-sizing: border-box;
+    outline: none;
+    border: none;
+    transition: $transition-time linear;
+    cursor: pointer;
+    font-size: $basic-font-size;
+}

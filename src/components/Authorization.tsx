@@ -13,14 +13,13 @@ const Authorization = ({ children, onSubmit }: Props) => {
   var params = new Map<string, string>();
   return (
     <form
+      className="start-form"
       method="POST"
       onSubmit={(e) => {
         onSubmit(e, params);
       }}
     >
-      <h1 style={{ textAlign: "center", margin: "10px 0" }}>
-        {t("authorizationHeader")}
-      </h1>
+      <h2>{t("authorizationHeader")}</h2>
       <Input
         type="tel"
         label={t("phoneNumber")}
@@ -39,13 +38,7 @@ const Authorization = ({ children, onSubmit }: Props) => {
           params.set(e.currentTarget.name, e.currentTarget.value);
         }}
       />
-      <button
-        style={{ display: "block", margin: "5px auto", width: "90%" }}
-        className="btn btn-warning"
-        type="submit"
-      >
-        {t("authorizeButton")}
-      </button>
+      <button type="submit">{t("authorizeButton")}</button>
       {children}
     </form>
   );

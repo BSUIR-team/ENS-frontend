@@ -12,8 +12,9 @@ const PersonalInfo = () => {
   const [t] = useTranslation();
   const [isDisabled, setDisabled] = useState(true);
   return (
-    <div>
+    <>
       <form
+        className="personal-info-form"
         method="POST"
         onSubmit={(e) => {
           setDisabled(true);
@@ -74,19 +75,18 @@ const PersonalInfo = () => {
             }}
           ></textarea>
         </label>
-        <button type="submit" className="btn btn-danger" disabled={isDisabled}>
+        <button type="submit" disabled={isDisabled}>
           {t("saveButton")}
         </button>
       </form>
       <button
-        className="btn btn-danger"
         onClick={() => {
           setDisabled(false);
         }}
       >
         {t("editButton")}
       </button>
-    </div>
+    </>
   );
 };
 

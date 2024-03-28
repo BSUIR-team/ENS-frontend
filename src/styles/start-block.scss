@@ -1,0 +1,49 @@
+@import './variables.scss';
+@import './forms.scss';
+@import './language-select.scss';
+
+.start-block {
+    width: 650px;
+    background-color: $passive-color;
+    border-radius: $border-radius;
+    border: $border-width solid #333;
+
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    -webkit-transform: translate(-50%, -50%);
+    -moz-transform: translate(-50%, -50%);
+    -o-transform: translate(-50%, -50%);
+    -ms-transform: translate(-50%, -50%);
+
+    a {
+        color: $start-form-elements-color;
+        transition: $transition-time linear;
+    }
+    
+    a:focus, a:hover {
+        color: $start-form-hover-color;
+    }
+
+    p {
+        font-size: $basic-font-size;
+        text-align: center;
+        margin: 10px 0;
+
+        a {
+            margin-left: 5px;
+            font-weight: bolder;
+        }
+    }
+
+    .language-select {
+        width: 90%;
+        margin: 10px auto 25px;
+        border: $border-width solid rgba($color: rgba(0,0,0), $alpha: 0);
+    }
+
+    .language-select:focus, .language-select:hover {
+        border-color: $start-form-hover-color;
+    }
+}

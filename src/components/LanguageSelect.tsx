@@ -15,7 +15,7 @@ const LanguageSelect = ({ onLanguageChange }: Props) => {
   const [index, setIndex] = useState(i18n.language);
   return (
     <select
-      className="form-select"
+      className="language-select"
       id="languageSelect"
       defaultValue={index}
       onChange={(e) => {

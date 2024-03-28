@@ -12,10 +12,10 @@ const Translations = {
       noAccountYet: "Ещё нет аккаунта?",
       accountAlreadyExists: "Уже есть аккаунт?",
       startAuthorization: "Войдите в него!",
-      startRegistration: "Зарегистрируйте его!",
+      startRegistration: "Зарегистрируйтесь!",
       contactsButton: "Контакты",
       addContactButton: "Добавить контакт",
-      personalInfoButton: "Личная информация",
+      personalInfoButton: "О себе",
       logoutButton: "Выйти",
       contactName: "Имя контакта",
       newContact: "Новый контакт",
@@ -24,6 +24,7 @@ const Translations = {
       messageSample: "Шаблон сообщения",
       Russian: "Русский",
       English: "Английский",
+      removeContactButton: "Удалить контакт",
     },
   },
   en: {
@@ -51,6 +52,7 @@ const Translations = {
       messageSample: "Message Sample",
       Russian: "Russian",
       English: "English",
+      removeContactButton: "Remove Contact",
     },
   },
 };

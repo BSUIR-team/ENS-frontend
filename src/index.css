@@ -1,0 +1,539 @@
+* {
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  background-color: #fff;
+}
+
+button {
+  font-size: 24px;
+  font-weight: bolder;
+  border-radius: 7px;
+  border: none;
+  display: block;
+  box-sizing: border-box;
+  padding: 5px 7px;
+  transition: 0.3s linear;
+}
+
+button:enabled {
+  cursor: pointer;
+}
+
+button:disabled {
+  cursor: not-allowed;
+}
+
+button:focus:enabled, button:hover:enabled {
+  box-shadow: 0 0 5px #333;
+}
+
+input {
+  border-radius: 7px;
+  outline: none;
+  box-sizing: border-box;
+  display: block;
+  border: none;
+  padding: 5px 7px;
+  transition: 0.3s linear;
+}
+
+input:disabled {
+  cursor: not-allowed;
+}
+
+.start-form {
+  width: 100%;
+}
+.start-form h2 {
+  text-align: center;
+  margin: 10px 0;
+}
+.start-form button {
+  margin: 10px auto 5px;
+  background-color: olive;
+  color: #fff;
+}
+.start-form input {
+  border-color: rgba(209, 209, 209, 0);
+}
+.start-form label {
+  margin: 5px auto;
+}
+.start-form h2 {
+  font-size: 56px;
+}
+.start-form button {
+  width: 90%;
+}
+.start-form button:focus:enabled, .start-form button:hover:enabled {
+  background-color: #fff;
+  color: rgb(121, 179, 7);
+}
+.start-form input {
+  border-width: 2px;
+  border-style: solid;
+  width: 100%;
+}
+.start-form input:focus:enabled, .start-form input:hover:enabled {
+  border-color: rgb(121, 179, 7);
+}
+.start-form button:disabled {
+  background-color: #d1d1d1;
+}
+.start-form label {
+  width: 90%;
+  display: block;
+  font-size: 24px;
+}
+
+.add-contact-form {
+  padding: 20px 100px;
+  width: 100%;
+}
+.add-contact-form h2 {
+  font-size: 56px;
+}
+.add-contact-form button {
+  width: 100%;
+}
+.add-contact-form button:focus:enabled, .add-contact-form button:hover:enabled {
+  background-color: #fff;
+  color: rgb(199, 71, 71);
+}
+.add-contact-form input {
+  border-width: 2px;
+  border-style: solid;
+  width: 100%;
+}
+.add-contact-form input:focus:enabled, .add-contact-form input:hover:enabled {
+  border-color: rgb(199, 71, 71);
+}
+.add-contact-form button:disabled {
+  background-color: #d1d1d1;
+}
+.add-contact-form label {
+  width: 100%;
+  display: block;
+  font-size: 24px;
+}
+.add-contact-form button {
+  margin-top: 20px;
+}
+.add-contact-form input {
+  border-color: #d1d1d1;
+}
+
+.personal-info-form {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  border: 2px solid #d1d1d1;
+  border-radius: 7px;
+  padding: 20px 100px;
+  width: 100%;
+}
+.personal-info-form button {
+  margin-top: 10px;
+}
+.personal-info-form button:enabled {
+  background-color: rgb(199, 71, 71);
+}
+.personal-info-form textarea {
+  font-size: 24px;
+  width: 100%;
+  border-radius: 7px;
+  outline: none;
+  box-sizing: border-box;
+  display: block;
+  border: 2px solid #d1d1d1;
+  padding: 5px 7px;
+  transition: 0.3s linear;
+}
+.personal-info-form textarea:focus:enabled, .personal-info-form textarea:hover:enabled {
+  border-color: rgb(199, 71, 71);
+}
+.personal-info-form input {
+  border-color: #d1d1d1;
+}
+.personal-info-form h2 {
+  font-size: 56px;
+}
+.personal-info-form button {
+  width: 80%;
+}
+.personal-info-form button:focus:enabled, .personal-info-form button:hover:enabled {
+  background-color: #fff;
+  color: rgb(199, 71, 71);
+}
+.personal-info-form input {
+  border-width: 2px;
+  border-style: solid;
+  width: 100%;
+}
+.personal-info-form input:focus:enabled, .personal-info-form input:hover:enabled {
+  border-color: rgb(199, 71, 71);
+}
+.personal-info-form button:disabled {
+  background-color: #d1d1d1;
+}
+.personal-info-form label {
+  width: 80%;
+  display: block;
+  font-size: 24px;
+}
+
+.language-select {
+  border-radius: 7px;
+  padding: 5px 7px;
+  display: block;
+  box-sizing: border-box;
+  outline: none;
+  border: none;
+  transition: 0.3s linear;
+  cursor: pointer;
+  font-size: 24px;
+}
+
+.start-block {
+  width: 650px;
+  background-color: #d1d1d1;
+  border-radius: 7px;
+  border: 2px solid #333;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  -webkit-transform: translate(-50%, -50%);
+  -moz-transform: translate(-50%, -50%);
+  -o-transform: translate(-50%, -50%);
+  -ms-transform: translate(-50%, -50%);
+}
+.start-block a {
+  color: olive;
+  transition: 0.3s linear;
+}
+.start-block a:focus, .start-block a:hover {
+  color: rgb(121, 179, 7);
+}
+.start-block p {
+  font-size: 24px;
+  text-align: center;
+  margin: 10px 0;
+}
+.start-block p a {
+  margin-left: 5px;
+  font-weight: bolder;
+}
+.start-block .language-select {
+  width: 90%;
+  margin: 10px auto 25px;
+  border: 2px solid rgba(0, 0, 0, 0);
+}
+.start-block .language-select:focus, .start-block .language-select:hover {
+  border-color: rgb(121, 179, 7);
+}
+
+button {
+  font-size: 24px;
+  font-weight: bolder;
+  border-radius: 7px;
+  border: none;
+  display: block;
+  box-sizing: border-box;
+  padding: 5px 7px;
+  transition: 0.3s linear;
+}
+
+button:enabled {
+  cursor: pointer;
+}
+
+button:disabled {
+  cursor: not-allowed;
+}
+
+button:focus:enabled, button:hover:enabled {
+  box-shadow: 0 0 5px #333;
+}
+
+.language-select {
+  border-radius: 7px;
+  padding: 5px 7px;
+  display: block;
+  box-sizing: border-box;
+  outline: none;
+  border: none;
+  transition: 0.3s linear;
+  cursor: pointer;
+  font-size: 24px;
+}
+
+.container {
+  width: 1200px;
+  display: flex;
+  justify-content: flex-start;
+  flex-wrap: wrap;
+  margin: 10px auto;
+}
+
+header {
+  width: 100%;
+  background-color: rgba(255, 255, 255, 0);
+  border-bottom: 2px solid rgb(199, 71, 71);
+  padding: 10px 0;
+}
+header .container {
+  flex-wrap: nowrap;
+  justify-content: space-between;
+  align-items: center;
+}
+header .children {
+  display: flex;
+  flex-wrap: nowrap;
+  justify-content: center;
+  align-items: center;
+}
+header .children button {
+  color: rgb(199, 71, 71);
+  margin: 10px;
+  background-color: rgba(255, 255, 255, 0);
+  transition: 0.16s linear;
+}
+header .children .active-section-button::after {
+  content: "";
+  display: block;
+  width: 100%;
+  height: 2px;
+  background-color: rgb(199, 71, 71);
+  margin-top: 2px;
+}
+header .children .language-select {
+  margin: 10px;
+  border: 2px solid #d1d1d1;
+}
+header .children .language-select:focus, header .children .language-select:hover {
+  border-color: rgb(199, 71, 71);
+}
+header h1 {
+  font-size: 32px;
+  display: block;
+}
+
+button {
+  font-size: 24px;
+  font-weight: bolder;
+  border-radius: 7px;
+  border: none;
+  display: block;
+  box-sizing: border-box;
+  padding: 5px 7px;
+  transition: 0.3s linear;
+}
+
+button:enabled {
+  cursor: pointer;
+}
+
+button:disabled {
+  cursor: not-allowed;
+}
+
+button:focus:enabled, button:hover:enabled {
+  box-shadow: 0 0 5px #333;
+}
+
+input {
+  border-radius: 7px;
+  outline: none;
+  box-sizing: border-box;
+  display: block;
+  border: none;
+  padding: 5px 7px;
+  transition: 0.3s linear;
+}
+
+input:disabled {
+  cursor: not-allowed;
+}
+
+.start-form {
+  width: 100%;
+}
+.start-form h2 {
+  text-align: center;
+  margin: 10px 0;
+}
+.start-form button {
+  margin: 10px auto 5px;
+  background-color: olive;
+  color: #fff;
+}
+.start-form input {
+  border-color: rgba(209, 209, 209, 0);
+}
+.start-form label {
+  margin: 5px auto;
+}
+.start-form h2 {
+  font-size: 56px;
+}
+.start-form button {
+  width: 90%;
+}
+.start-form button:focus:enabled, .start-form button:hover:enabled {
+  background-color: #fff;
+  color: rgb(121, 179, 7);
+}
+.start-form input {
+  border-width: 2px;
+  border-style: solid;
+  width: 100%;
+}
+.start-form input:focus:enabled, .start-form input:hover:enabled {
+  border-color: rgb(121, 179, 7);
+}
+.start-form button:disabled {
+  background-color: #d1d1d1;
+}
+.start-form label {
+  width: 90%;
+  display: block;
+  font-size: 24px;
+}
+
+.add-contact-form {
+  padding: 20px 100px;
+  width: 100%;
+}
+.add-contact-form h2 {
+  font-size: 56px;
+}
+.add-contact-form button {
+  width: 100%;
+}
+.add-contact-form button:focus:enabled, .add-contact-form button:hover:enabled {
+  background-color: #fff;
+  color: rgb(199, 71, 71);
+}
+.add-contact-form input {
+  border-width: 2px;
+  border-style: solid;
+  width: 100%;
+}
+.add-contact-form input:focus:enabled, .add-contact-form input:hover:enabled {
+  border-color: rgb(199, 71, 71);
+}
+.add-contact-form button:disabled {
+  background-color: #d1d1d1;
+}
+.add-contact-form label {
+  width: 100%;
+  display: block;
+  font-size: 24px;
+}
+.add-contact-form button {
+  margin-top: 20px;
+}
+.add-contact-form input {
+  border-color: #d1d1d1;
+}
+
+.personal-info-form {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  border: 2px solid #d1d1d1;
+  border-radius: 7px;
+  padding: 20px 100px;
+  width: 100%;
+}
+.personal-info-form button {
+  margin-top: 10px;
+}
+.personal-info-form button:enabled {
+  background-color: rgb(199, 71, 71);
+}
+.personal-info-form textarea {
+  font-size: 24px;
+  width: 100%;
+  border-radius: 7px;
+  outline: none;
+  box-sizing: border-box;
+  display: block;
+  border: 2px solid #d1d1d1;
+  padding: 5px 7px;
+  transition: 0.3s linear;
+}
+.personal-info-form textarea:focus:enabled, .personal-info-form textarea:hover:enabled {
+  border-color: rgb(199, 71, 71);
+}
+.personal-info-form input {
+  border-color: #d1d1d1;
+}
+.personal-info-form h2 {
+  font-size: 56px;
+}
+.personal-info-form button {
+  width: 80%;
+}
+.personal-info-form button:focus:enabled, .personal-info-form button:hover:enabled {
+  background-color: #fff;
+  color: rgb(199, 71, 71);
+}
+.personal-info-form input {
+  border-width: 2px;
+  border-style: solid;
+  width: 100%;
+}
+.personal-info-form input:focus:enabled, .personal-info-form input:hover:enabled {
+  border-color: rgb(199, 71, 71);
+}
+.personal-info-form button:disabled {
+  background-color: #d1d1d1;
+}
+.personal-info-form label {
+  width: 80%;
+  display: block;
+  font-size: 24px;
+}
+
+.contacts-list {
+  width: 100%;
+  list-style: none;
+  padding: 20px 100px;
+  font-size: 24px;
+}
+.contacts-list h2 {
+  font-size: 56px;
+  margin: 0;
+  margin-left: 10px;
+  margin-bottom: 20px;
+}
+.contacts-list h3 {
+  font-size: 40px;
+  margin: 0;
+}
+.contacts-list li {
+  width: 100%;
+  border: 2px solid #d1d1d1;
+  border-radius: 7px;
+  margin: 10px 0;
+  padding: 10px;
+}
+.contacts-list p {
+  margin-bottom: 10px;
+}
+
+.primary-block button:enabled {
+  color: #fff;
+  background-color: rgb(199, 71, 71);
+}
+.primary-block button:focus:enabled, .primary-block button:hover:enabled {
+  background-color: #fff;
+  color: rgb(199, 71, 71);
+}
+
+/*# sourceMappingURL=index.css.map */

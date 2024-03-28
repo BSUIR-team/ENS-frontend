@@ -1,0 +1,15 @@
+@import './variables.scss';
+
+input {
+    border-radius: $border-radius;
+    outline: none;
+    box-sizing: border-box;
+    display: block;
+    border: none;
+    padding: $control-padding;
+    transition: $transition-time linear;
+}
+
+input:disabled {
+    cursor: not-allowed;
+}

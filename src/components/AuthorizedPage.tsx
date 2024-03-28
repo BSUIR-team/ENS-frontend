@@ -26,40 +26,26 @@ const AuthorizedPage = ({ setAuthorized }: Props) => {
   return (
     <div>
       <Header>
-        <button
-          className="btn btn-danger"
-          onClick={() => {
-            setPage("contacts");
-          }}
-        >
-          {t("contactsButton")}
-        </button>
-        <button
-          className="btn btn-danger"
-          onClick={() => {
-            setPage("addContact");
-          }}
-        >
-          {t("addContactButton")}
-        </button>
-        <button
-          className="btn btn-danger"
-          onClick={() => {
-            setPage("personalInfo");
-          }}
-        >
-          {t("personalInfoButton")}
-        </button>
-        <button className="btn btn-danger" onClick={logout}>
-          {t("logoutButton")}
-        </button>
+        {Array.from(FunctionalElements.keys()).map((key) => (
+          <button
+            className={key === currPage ? "active-section-button" : ""}
+            onClick={() => {
+              setPage(key);
+            }}
+          >
+            {t(key + "Button")}
+          </button>
+        ))}
+        <button onClick={logout}>{t("logoutButton")}</button>
         <LanguageSelect
           onLanguageChange={(language) => {
             i18n.changeLanguage(language);
           }}
         ></LanguageSelect>
       </Header>
-      {FunctionalElements.get(currPage)}
+      <div className="container primary-block">
+        {FunctionalElements.get(currPage)}
+      </div>
     </div>
   );
 };

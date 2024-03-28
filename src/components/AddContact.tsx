@@ -12,6 +12,7 @@ const AddContact = () => {
   const [t] = useTranslation();
   return (
     <form
+      className="add-contact-form"
       method="POST"
       onSubmit={(e) => {
         addContact(e, params);
@@ -54,9 +55,7 @@ const AddContact = () => {
           params.set(e.currentTarget.name, e.currentTarget.value);
         }}
       />
-      <button className="btn btn-danger" type="submit">
-        {t("addContactButton")}
-      </button>
+      <button type="submit">{t("addContactButton")}</button>
     </form>
   );
 };

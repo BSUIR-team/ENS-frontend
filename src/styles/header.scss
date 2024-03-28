@@ -1,0 +1,56 @@
+@import './variables.scss';
+@import './button.scss';
+@import './language-select.scss';
+@import './primary-container.scss';
+
+header {
+    width: 100%;
+    background-color: rgba($color: #fff, $alpha: 0);
+    border-bottom: $border-width solid $primary-page-color;
+    padding: 10px 0;
+
+    .container {
+        flex-wrap: nowrap;
+        justify-content: space-between;
+        align-items: center;
+    }
+
+    .children {
+        display: flex;
+        flex-wrap: nowrap;
+        justify-content: center;
+        align-items: center;
+
+        button {
+            color: $primary-page-color;
+            margin: 10px;
+            background-color: rgba($color: #fff, $alpha: 0);
+            transition: .16s linear;
+        }
+
+        .active-section-button::after {
+            content: "";
+            display: block;
+            width: 100%;
+            height: $border-width;
+            background-color: $primary-page-color;
+            margin-top: 2px;
+        }
+
+        .language-select {
+            margin: 10px;
+            border: $border-width solid $passive-color;
+        }
+
+        .language-select:focus, .language-select:hover {
+            border-color: $primary-page-color;
+        }
+    }
+
+    h1 {
+        font-size: $primary-header-font-size;
+        display: block;
+    }
+
+    
+}

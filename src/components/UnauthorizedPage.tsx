@@ -28,15 +28,7 @@ const UnauthorizedPage = ({ setAuthorized }: Props) => {
   }
 
   return (
-    <div
-      style={{
-        width: "600px",
-        margin: "100px auto",
-        backgroundColor: "#d1d1d1",
-        borderRadius: "5px",
-        border: "2px solid #333",
-      }}
-    >
+    <div className="start-block">
       {isRegistration ? (
         <Registration onSubmit={registerUser} />
       ) : (
@@ -45,8 +37,6 @@ const UnauthorizedPage = ({ setAuthorized }: Props) => {
       <p style={{ textAlign: "center", margin: "10px 0" }}>
         {isRegistration ? t("accountAlreadyExists") : t("noAccountYet")}
         <a
-          style={{ marginLeft: "5px" }}
-          className="link-warning link-opacity-100-hover"
           href="#"
           onClick={() => {
             setRegistration(!isRegistration);
