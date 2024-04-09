@@ -25,6 +25,7 @@ const Translations = {
       Russian: "Русский",
       English: "Английский",
       removeContactButton: "Удалить контакт",
+      notifyAll: "Оповестить всех",
     },
   },
   en: {
@@ -53,6 +54,7 @@ const Translations = {
       Russian: "Russian",
       English: "English",
       removeContactButton: "Remove Contact",
+      notifyAll: "Notify All",
     },
   },
 };

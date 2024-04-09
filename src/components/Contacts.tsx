@@ -19,6 +19,18 @@ function getContacts(): {
       email: "aboba@gmail.com",
       name: "Aboba",
     },
+    {
+      id: "3",
+      phone: "+375291488337",
+      email: "aboba@gmail.com",
+      name: "Aboba",
+    },
+    {
+      id: "4",
+      phone: "+375291488337",
+      email: "aboba@gmail.com",
+      name: "Aboba",
+    },
   ].sort((a, b) => {
     return a.name.localeCompare(b.name);
   });

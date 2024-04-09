@@ -1,17 +1,18 @@
 import { useState } from "react";
 import UnauthorizedPage from "./components/UnauthorizedPage";
 import AuthorizedPage from "./components/AuthorizedPage";
+import { Alert } from "./components/Alert";
 
 function App() {
   const [isAuthorized, setAuthorized] = useState(false);
   return (
-    <div>
+    <Alert>
       {isAuthorized ? (
         <AuthorizedPage setAuthorized={setAuthorized} />
       ) : (
         <UnauthorizedPage setAuthorized={setAuthorized} />
       )}
-    </div>
+    </Alert>
   );
 }
 

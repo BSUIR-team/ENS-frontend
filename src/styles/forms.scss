@@ -4,7 +4,7 @@
 
 @mixin form-controls($control-color, $control-width) {
 
-    width: 100%;
+    width: 95%;
 
     h2 {
         font-size: $secondary-header-font-size;
@@ -42,6 +42,7 @@
 
 .start-form {
     $controls-width: 90%;
+    margin: 0 auto;
 
     h2 {
         text-align: center;

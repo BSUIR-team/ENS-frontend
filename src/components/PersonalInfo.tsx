@@ -80,6 +80,7 @@ const PersonalInfo = () => {
         </button>
       </form>
       <button
+        className="edit-personal-info"
         onClick={() => {
           setDisabled(false);
         }}

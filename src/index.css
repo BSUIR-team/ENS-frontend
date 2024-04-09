@@ -45,7 +45,8 @@ input:disabled {
 }
 
 .start-form {
-  width: 100%;
+  margin: 0 auto;
+  width: 95%;
 }
 .start-form h2 {
   text-align: center;
@@ -91,7 +92,7 @@ input:disabled {
 
 .add-contact-form {
   padding: 20px 100px;
-  width: 100%;
+  width: 95%;
 }
 .add-contact-form h2 {
   font-size: 56px;
@@ -133,7 +134,7 @@ input:disabled {
   border: 2px solid #d1d1d1;
   border-radius: 7px;
   padding: 20px 100px;
-  width: 100%;
+  width: 95%;
 }
 .personal-info-form button {
   margin-top: 10px;
@@ -280,10 +281,13 @@ button:focus:enabled, button:hover:enabled {
 }
 
 header {
+  margin: 0;
   width: 100%;
-  background-color: rgba(255, 255, 255, 0);
+  background-color: #fff;
   border-bottom: 2px solid rgb(199, 71, 71);
   padding: 10px 0;
+  position: sticky;
+  top: 0;
 }
 header .container {
   flex-wrap: nowrap;
@@ -360,7 +364,8 @@ input:disabled {
 }
 
 .start-form {
-  width: 100%;
+  margin: 0 auto;
+  width: 95%;
 }
 .start-form h2 {
   text-align: center;
@@ -406,7 +411,7 @@ input:disabled {
 
 .add-contact-form {
   padding: 20px 100px;
-  width: 100%;
+  width: 95%;
 }
 .add-contact-form h2 {
   font-size: 56px;
@@ -448,7 +453,7 @@ input:disabled {
   border: 2px solid #d1d1d1;
   border-radius: 7px;
   padding: 20px 100px;
-  width: 100%;
+  width: 95%;
 }
 .personal-info-form button {
   margin-top: 10px;
@@ -527,12 +532,70 @@ input:disabled {
   margin-bottom: 10px;
 }
 
+.primary-block {
+  justify-content: center;
+}
 .primary-block button:enabled {
   color: #fff;
   background-color: rgb(199, 71, 71);
 }
 .primary-block button:focus:enabled, .primary-block button:hover:enabled {
   background-color: #fff;
+  color: rgb(199, 71, 71);
+}
+.primary-block .edit-personal-info {
+  width: 95%;
+}
+.primary-block .notify-all {
+  width: 95%;
+  margin: 10px auto 20px;
+  height: 60px;
+}
+
+.alert {
+  position: sticky;
+  bottom: 20px;
+  right: 20px;
+  width: 400px;
+  border-radius: 7px;
+  background-color: #fff;
+  font-size: 24px;
+  border: 2px solid #333;
+  overflow: hidden;
+  float: right;
+  padding: 10px;
+}
+.alert button {
+  margin: 0;
+  margin-right: 5px;
+  width: 36px;
+  padding: 0 5px;
+  background-color: rgba(255, 255, 255, 0);
+  border-radius: 50%;
+  float: right;
+}
+.alert button i {
+  margin: 0;
+  padding: 0;
+}
+.alert p {
+  margin: 0;
+  padding: 0;
+  color: #333;
+  word-wrap: break-word;
+}
+
+.success {
+  border-color: rgb(121, 179, 7);
+}
+.success button {
+  color: rgb(121, 179, 7);
+}
+
+.fail {
+  border-color: rgb(199, 71, 71);
+}
+.fail button {
   color: rgb(199, 71, 71);
 }
 

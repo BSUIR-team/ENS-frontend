@@ -3,6 +3,7 @@
 @import './contacts-list.scss';
 
 .primary-block {
+    justify-content: center;
     button:enabled {
         color: #fff;
         background-color: $primary-page-color;
@@ -11,5 +12,15 @@
     button:focus:enabled, button:hover:enabled {
         background-color: #fff;
         color: $primary-page-color;
+    }
+
+    .edit-personal-info {
+        width: 95%;;
+    }
+
+    .notify-all {
+        width: 95%;
+        margin: 10px auto 20px;
+        height: 60px;
     }
 }

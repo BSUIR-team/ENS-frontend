@@ -4,10 +4,13 @@
 @import './primary-container.scss';
 
 header {
+    margin: 0;
     width: 100%;
-    background-color: rgba($color: #fff, $alpha: 0);
+    background-color: $white-color;
     border-bottom: $border-width solid $primary-page-color;
     padding: 10px 0;
+    position: sticky;
+    top: 0;
 
     .container {
         flex-wrap: nowrap;
@@ -24,7 +27,7 @@ header {
         button {
             color: $primary-page-color;
             margin: 10px;
-            background-color: rgba($color: #fff, $alpha: 0);
+            background-color: rgba($color: $white-color, $alpha: 0);
             transition: .16s linear;
         }
 

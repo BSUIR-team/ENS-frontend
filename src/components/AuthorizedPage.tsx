@@ -5,9 +5,15 @@ import AddContact from "./AddContact";
 import PersonalInfo from "./PersonalInfo";
 import LanguageSelect from "./LanguageSelect";
 import { useTranslation } from "react-i18next";
+import { useAlert } from "./Alert";
 
 interface Props {
   setAuthorized: (e: boolean) => void;
+}
+
+function notifyAll(showAlert: (message: string) => void) {
+  showAlert("Notifyyyyyy");
+  //console.log("Notifyyyyyyy");
 }
 
 const FunctionalElements = new Map<string, ReactNode>([
@@ -18,6 +24,7 @@ const FunctionalElements = new Map<string, ReactNode>([
 
 const AuthorizedPage = ({ setAuthorized }: Props) => {
   const [t, i18n] = useTranslation();
+  const showAlert = useAlert();
   function logout() {
     console.log("logout");
     setAuthorized(false);
@@ -44,6 +51,14 @@ const AuthorizedPage = ({ setAuthorized }: Props) => {
         ></LanguageSelect>
       </Header>
       <div className="container primary-block">
+        <button
+          className="notify-all"
+          onClick={() => {
+            notifyAll(showAlert);
+          }}
+        >
+          {t("notifyAll")}
+        </button>
         {FunctionalElements.get(currPage)}
       </div>
     </div>

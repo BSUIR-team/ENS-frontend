@@ -1,6 +1,7 @@
 import { FormEvent } from "react";
 import Input from "./Input";
 import { useTranslation } from "react-i18next";
+import { useAlert } from "./Alert";
 
 function addContact(e: FormEvent, params: Map<string, string>) {
   console.log(JSON.stringify(Object.fromEntries(params)));
@@ -9,6 +10,7 @@ function addContact(e: FormEvent, params: Map<string, string>) {
 
 const AddContact = () => {
   var params = new Map<string, string>();
+  const showAlert = useAlert();
   const [t] = useTranslation();
   return (
     <form
@@ -16,6 +18,7 @@ const AddContact = () => {
       method="POST"
       onSubmit={(e) => {
         addContact(e, params);
+        showAlert("Contact added");
       }}
     >
       <h2>{t("newContact")}</h2>
@@ -23,7 +26,7 @@ const AddContact = () => {
         type="text"
         label={t("contactName")}
         name="phone"
-        placeholder="+375291488228"
+        placeholder="Name"
         onChange={(e) => {
           params.set(e.currentTarget.name, e.currentTarget.value);
         }}
@@ -42,15 +45,6 @@ const AddContact = () => {
         label={t("phoneNumber")}
         name="phone"
         placeholder="+375291488228"
-        onChange={(e) => {
-          params.set(e.currentTarget.name, e.currentTarget.value);
-        }}
-      />
-      <Input
-        type="email"
-        label={t("email")}
-        name="emailInput"
-        placeholder="johndoe@gmail.com"
         onChange={(e) => {
           params.set(e.currentTarget.name, e.currentTarget.value);
         }}
