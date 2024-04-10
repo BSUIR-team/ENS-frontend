@@ -1,30 +1,28 @@
-import { ReactNode, createContext, useContext, useState } from "react";
+import { ReactNode, useState } from "react";
+import { AlertContext, AlertType } from "../hooks/useAlert";
 
 interface Props {
   children: ReactNode;
 }
 
-const AlertContext = createContext((message: string) => {
-  console.log(message);
-});
-
-export const useAlert = () => {
-  const context = useContext(AlertContext);
-  if (!context) {
-    console.log("Error using context");
-  }
-  return context;
-};
-
 export const Alert = ({ children }: Props) => {
   const [isClosed, setClosed] = useState(true);
   const [message, setMessage] = useState("");
-  const [type, setType] = useState("info");
+  const [type, setType] = useState(AlertType.SUCCESS);
 
-  const showAlert = (newMessage: string, newType = "success") => {
+  let timeout = 0;
+
+  const showAlert = (
+    newMessage: string,
+    newType: AlertType = AlertType.SUCCESS
+  ) => {
+    clearTimeout(timeout);
     setMessage(newMessage);
     setType(newType);
     setClosed(false);
+    timeout = setTimeout(() => {
+      setClosed(true);
+    }, 6000);
   };
 
   const hideAlert = () => {

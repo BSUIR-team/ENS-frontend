@@ -1,32 +1,41 @@
-import { FormEvent } from "react";
+import { FormEvent, useState } from "react";
 import Input from "./Input";
 import "../i18n";
 import { useTranslation } from "react-i18next";
+import { useAction } from "../hooks/useAction";
+import { User } from "../types/User";
+import { AlertType, useAlert } from "../hooks/useAlert";
 
 interface Props {
   children?: string;
-  onSubmit: (e: FormEvent, params: Map<string, string>) => void;
 }
 
-const Authorization = ({ children, onSubmit }: Props) => {
+const Authorization = ({ children }: Props) => {
   const [t] = useTranslation();
-  var params = new Map<string, string>();
+  const { logIn } = useAction();
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const showAlert = useAlert();
+
+  function authorizeUser(e: FormEvent) {
+    e.preventDefault();
+    if (email && password) {
+      logIn(new User(email, password));
+    } else {
+      showAlert("Fields must be set", AlertType.FAIL);
+    }
+  }
+
   return (
-    <form
-      className="start-form"
-      method="POST"
-      onSubmit={(e) => {
-        onSubmit(e, params);
-      }}
-    >
+    <form className="start-form" method="POST" onSubmit={authorizeUser}>
       <h2>{t("authorizationHeader")}</h2>
       <Input
-        type="tel"
-        label={t("phoneNumber")}
-        name="phone"
-        placeholder="+375291488228"
+        type="email"
+        label={t("email")}
+        name="email"
+        placeholder="johndoe@example.com"
         onChange={(e) => {
-          params.set(e.currentTarget.name, e.currentTarget.value);
+          setEmail(e.currentTarget.value);
         }}
       />
       <Input
@@ -35,7 +44,7 @@ const Authorization = ({ children, onSubmit }: Props) => {
         name="password"
         placeholder={t("password")}
         onChange={(e) => {
-          params.set(e.currentTarget.name, e.currentTarget.value);
+          setPassword(e.currentTarget.value);
         }}
       />
       <button type="submit">{t("authorizeButton")}</button>

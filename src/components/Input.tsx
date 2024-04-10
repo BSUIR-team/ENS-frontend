@@ -5,6 +5,7 @@ interface Props {
   placeholder?: string;
   value?: string;
   disabled?: boolean;
+  accept?: string;
   onChange?: (e: React.FormEvent<HTMLInputElement>) => void;
 }
 
@@ -15,6 +16,7 @@ const Input = ({
   placeholder,
   value,
   disabled,
+  accept,
   onChange,
 }: Props) => {
   return (
@@ -26,6 +28,7 @@ const Input = ({
         placeholder={placeholder}
         value={value}
         disabled={disabled}
+        accept={accept}
         onChange={onChange}
       />
     </label>

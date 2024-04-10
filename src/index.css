@@ -553,7 +553,7 @@ input:disabled {
 }
 
 .alert {
-  position: sticky;
+  position: fixed;
   bottom: 20px;
   right: 20px;
   width: 400px;

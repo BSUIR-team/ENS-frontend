@@ -15,6 +15,7 @@ const Translations = {
       startRegistration: "Зарегистрируйтесь!",
       contactsButton: "Контакты",
       addContactButton: "Добавить контакт",
+      addContactsButton: "Добавить контакты",
       personalInfoButton: "О себе",
       logoutButton: "Выйти",
       contactName: "Имя контакта",
@@ -26,6 +27,7 @@ const Translations = {
       English: "Английский",
       removeContactButton: "Удалить контакт",
       notifyAll: "Оповестить всех",
+      contactsFromFile: "Добавить контакты из файла",
     },
   },
   en: {
@@ -44,6 +46,7 @@ const Translations = {
       startRegistration: "Sign up!",
       contactsButton: "Contacts",
       addContactButton: "Add Contact",
+      addContactsButton: "Add Contacts",
       personalInfoButton: "Personal Info",
       logoutButton: "Log Out",
       contactName: "Contact Name",
@@ -55,6 +58,7 @@ const Translations = {
       English: "English",
       removeContactButton: "Remove Contact",
       notifyAll: "Notify All",
+      contactsFromFile: "Add Contacts from file",
     },
   },
 };

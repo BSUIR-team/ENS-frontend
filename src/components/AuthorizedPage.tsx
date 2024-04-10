@@ -5,11 +5,8 @@ import AddContact from "./AddContact";
 import PersonalInfo from "./PersonalInfo";
 import LanguageSelect from "./LanguageSelect";
 import { useTranslation } from "react-i18next";
-import { useAlert } from "./Alert";
-
-interface Props {
-  setAuthorized: (e: boolean) => void;
-}
+import { useAlert } from "../hooks/useAlert";
+import { useAction } from "../hooks/useAction";
 
 function notifyAll(showAlert: (message: string) => void) {
   showAlert("Notifyyyyyy");
@@ -22,12 +19,13 @@ const FunctionalElements = new Map<string, ReactNode>([
   ["personalInfo", <PersonalInfo />],
 ]);
 
-const AuthorizedPage = ({ setAuthorized }: Props) => {
+const AuthorizedPage = () => {
   const [t, i18n] = useTranslation();
   const showAlert = useAlert();
+  const { logOut } = useAction();
   function logout() {
     console.log("logout");
-    setAuthorized(false);
+    logOut();
   }
   const [currPage, setPage] = useState("contacts");
   return (
@@ -35,6 +33,7 @@ const AuthorizedPage = ({ setAuthorized }: Props) => {
       <Header>
         {Array.from(FunctionalElements.keys()).map((key) => (
           <button
+            key={key}
             className={key === currPage ? "active-section-button" : ""}
             onClick={() => {
               setPage(key);

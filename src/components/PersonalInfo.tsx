@@ -1,25 +1,44 @@
 import { FormEvent, useState } from "react";
 import Input from "./Input";
 import { useTranslation } from "react-i18next";
-
-function editPersonalInfo(e: FormEvent, params: Map<string, string>) {
-  console.log(JSON.stringify(Object.fromEntries(params)));
-  e.preventDefault();
-}
+import { useTypedSelector } from "../hooks/useTypedSelector";
+import { AlertType, useAlert } from "../hooks/useAlert";
+import { useAction } from "../hooks/useAction";
+import { User } from "../types/User";
 
 const PersonalInfo = () => {
-  var params = new Map<string, string>();
   const [t] = useTranslation();
+  const showAlert = useAlert();
+  const user = useTypedSelector((state) => state.user.user);
+  const { update } = useAction();
+
   const [isDisabled, setDisabled] = useState(true);
+  const [phone, setPhone] = useState(user.phone);
+  const [email, setEmail] = useState(user.email);
+  const [password, setPassword] = useState(user.password);
+  const [repassword, setRepassword] = useState(user.password);
+  const [message, setMessage] = useState(user.message);
+
+  function editPersonalInfo(e: FormEvent) {
+    e.preventDefault();
+    if (phone && email && password && repassword && message) {
+      if (password == repassword) {
+        update(new User(email, password, message, phone, user.contacts));
+        setDisabled(true);
+      } else {
+        showAlert("Passwords must match", AlertType.FAIL);
+      }
+    } else {
+      showAlert("Some fields are empty", AlertType.FAIL);
+    }
+  }
+
   return (
     <>
       <form
         className="personal-info-form"
         method="POST"
-        onSubmit={(e) => {
-          setDisabled(true);
-          editPersonalInfo(e, params);
-        }}
+        onSubmit={editPersonalInfo}
       >
         <h2>{t("personalInfoButton")}</h2>
         <Input
@@ -27,9 +46,10 @@ const PersonalInfo = () => {
           label={t("phoneNumber")}
           name="phone"
           placeholder="+375291488228"
+          value={phone}
           disabled={isDisabled}
           onChange={(e) => {
-            params.set(e.currentTarget.name, e.currentTarget.value);
+            setPhone(e.currentTarget.value);
           }}
         />
         <Input
@@ -37,9 +57,10 @@ const PersonalInfo = () => {
           label={t("email")}
           name="email"
           placeholder="johndoe@gmail.com"
+          value={email}
           disabled={isDisabled}
           onChange={(e) => {
-            params.set(e.currentTarget.name, e.currentTarget.value);
+            setEmail(e.currentTarget.value);
           }}
         />
         <Input
@@ -47,9 +68,10 @@ const PersonalInfo = () => {
           label={t("password")}
           name="password"
           placeholder={t("password")}
+          value={password}
           disabled={isDisabled}
           onChange={(e) => {
-            params.set(e.currentTarget.name, e.currentTarget.value);
+            setPassword(e.currentTarget.value);
           }}
         />
         {isDisabled || (
@@ -58,9 +80,10 @@ const PersonalInfo = () => {
             label={t("repeatPassword")}
             name="repeatPassword"
             placeholder={t("password")}
+            value={password}
             disabled={isDisabled}
             onChange={(e) => {
-              params.set(e.currentTarget.name, e.currentTarget.value);
+              setRepassword(e.currentTarget.value);
             }}
           />
         )}
@@ -70,8 +93,9 @@ const PersonalInfo = () => {
             className="form-control"
             name="messageSample"
             disabled={isDisabled}
+            value={message}
             onChange={(e) => {
-              params.set(e.currentTarget.name, e.currentTarget.value);
+              setMessage(e.currentTarget.value);
             }}
           ></textarea>
         </label>

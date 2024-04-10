@@ -1,24 +1,42 @@
-import { FormEvent } from "react";
+import { FormEvent, SetStateAction, useState } from "react";
 import Input from "./Input";
 import "../i18n";
 import { useTranslation } from "react-i18next";
+import { AlertType, useAlert } from "../hooks/useAlert";
+import { User } from "../types/User";
 
 interface Props {
   children?: string;
-  onSubmit: (e: FormEvent, params: Map<string, string>) => void;
+  setRegistered: (e: SetStateAction<boolean>) => void;
 }
 
-const Registration = ({ children, onSubmit }: Props) => {
+const Registration = ({ children, setRegistered }: Props) => {
   const [t] = useTranslation();
-  var params = new Map<string, string>();
+  const [phone, setPhone] = useState("");
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const [repassword, setRepassword] = useState("");
+  const showAlert = useAlert();
+
+  function registerUser(e: FormEvent) {
+    //console.log("register");
+    e.preventDefault();
+    if (phone && email && password && repassword) {
+      if (password == repassword) {
+        let user = new User(email, password, "", phone);
+        console.log(user);
+        showAlert(`${email} registered`);
+        setRegistered(false);
+      } else {
+        showAlert("Passwords must be equal", AlertType.FAIL);
+      }
+    } else {
+      showAlert("Wrong credentials", AlertType.FAIL);
+    }
+  }
+
   return (
-    <form
-      className="start-form"
-      method="POST"
-      onSubmit={(e) => {
-        onSubmit(e, params);
-      }}
-    >
+    <form className="start-form" method="POST" onSubmit={registerUser}>
       <h2>{t("registrationHeader")}</h2>
       <Input
         type="tel"
@@ -26,7 +44,7 @@ const Registration = ({ children, onSubmit }: Props) => {
         name="phone"
         placeholder="+375291488228"
         onChange={(e) => {
-          params.set(e.currentTarget.name, e.currentTarget.value);
+          setPhone(e.currentTarget.value);
         }}
       />
       <Input
@@ -35,7 +53,7 @@ const Registration = ({ children, onSubmit }: Props) => {
         name="email"
         placeholder="johndoe@gmail.com"
         onChange={(e) => {
-          params.set(e.currentTarget.name, e.currentTarget.value);
+          setEmail(e.currentTarget.value);
         }}
       />
       <Input
@@ -44,7 +62,7 @@ const Registration = ({ children, onSubmit }: Props) => {
         name="password"
         placeholder={t("password")}
         onChange={(e) => {
-          params.set(e.currentTarget.name, e.currentTarget.value);
+          setPassword(e.currentTarget.value);
         }}
       />
       <Input
@@ -53,7 +71,7 @@ const Registration = ({ children, onSubmit }: Props) => {
         name="repeatPassword"
         placeholder={t("password")}
         onChange={(e) => {
-          params.set(e.currentTarget.name, e.currentTarget.value);
+          setRepassword(e.currentTarget.value);
         }}
       />
       <button type="submit">{t("registerButton")}</button>
