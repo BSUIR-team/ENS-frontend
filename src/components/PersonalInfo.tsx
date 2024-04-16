@@ -13,7 +13,7 @@ const PersonalInfo = () => {
   const { update } = useAction();
 
   const [isDisabled, setDisabled] = useState(true);
-  const [phone, setPhone] = useState(user.phone);
+  const [name, setName] = useState(user.name);
   const [email, setEmail] = useState(user.email);
   const [password, setPassword] = useState(user.password);
   const [repassword, setRepassword] = useState(user.password);
@@ -21,16 +21,24 @@ const PersonalInfo = () => {
 
   function editPersonalInfo(e: FormEvent) {
     e.preventDefault();
-    if (phone && email && password && repassword && message) {
+    if (name && email && password && repassword && message) {
       if (password == repassword) {
-        update(new User(email, password, message, phone, user.contacts));
+        update(new User(email, password, message, name, user.contacts));
         setDisabled(true);
       } else {
-        showAlert("Passwords must match", AlertType.FAIL);
+        showAlert({ message: t("passwordsMustMatch"), type: AlertType.FAIL });
       }
     } else {
-      showAlert("Some fields are empty", AlertType.FAIL);
+      showAlert({ message: t("incorrectFields"), type: AlertType.FAIL });
     }
+  }
+
+  function discardChanges() {
+    setName(user.name);
+    setEmail(user.email);
+    setPassword(user.password);
+    setRepassword(user.password);
+    setMessage(user.message);
   }
 
   return (
@@ -42,14 +50,14 @@ const PersonalInfo = () => {
       >
         <h2>{t("personalInfoButton")}</h2>
         <Input
-          type="tel"
-          label={t("phoneNumber")}
-          name="phone"
-          placeholder="+375291488228"
-          value={phone}
+          type="text"
+          label={t("nameField")}
+          name="name"
+          placeholder="John"
+          value={name}
           disabled={isDisabled}
           onChange={(e) => {
-            setPhone(e.currentTarget.value);
+            setName(e.currentTarget.value);
           }}
         />
         <Input
@@ -80,7 +88,7 @@ const PersonalInfo = () => {
             label={t("repeatPassword")}
             name="repeatPassword"
             placeholder={t("password")}
-            value={password}
+            value={repassword}
             disabled={isDisabled}
             onChange={(e) => {
               setRepassword(e.currentTarget.value);
@@ -106,10 +114,13 @@ const PersonalInfo = () => {
       <button
         className="edit-personal-info"
         onClick={() => {
-          setDisabled(false);
+          setDisabled(!isDisabled);
+          if (!isDisabled) {
+            discardChanges();
+          }
         }}
       >
-        {t("editButton")}
+        {isDisabled ? t("editButton") : t("cancelActionButton")}
       </button>
     </>
   );

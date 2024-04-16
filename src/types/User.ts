@@ -1,10 +1,11 @@
 import { Contact } from "./Contact";
 
-export enum UserActions {LOG_IN = "LOG_IN", LOG_OUT = "LOG_OUT", UPDATE = "UPDATE"};
+export enum UserActions {LOG_IN = "LOG_IN", LOG_OUT = "LOG_OUT", UPDATE = "UPDATE", WAIT = "WAIT"};
 
 export interface UserState {
     user: User;
     logged: boolean;
+    loading: boolean;
 }
 
 interface UserLogOutAction {
@@ -21,20 +22,25 @@ interface UserUpdateAction {
     payload: UserState;
 }
 
-export type UserAction = UserLogInAction | UserLogOutAction | UserUpdateAction;
+interface UserWaitAction {
+    type: UserActions.WAIT;
+    payload: UserState;
+}
+
+export type UserAction = UserLogInAction | UserLogOutAction | UserUpdateAction | UserWaitAction;
 
 export class User {
     readonly email: string;
     readonly password: string;
     readonly message: string;
-    readonly phone: string;
+    readonly name: string;
     readonly contacts: Contact[];
 
-    constructor(email: string, password: string, message: string = "", phone: string = "", contacts: Contact[] = []) {
+    constructor(email: string, password: string, message: string = "", name: string = "", contacts: Contact[] = []) {
         this.email = email;
         this.password = password;
         this.message = message;
-        this.phone = phone;
+        this.name = name;
         this.contacts = contacts;
     }
 }

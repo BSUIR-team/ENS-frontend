@@ -5,13 +5,12 @@ import AddContact from "./AddContact";
 import PersonalInfo from "./PersonalInfo";
 import LanguageSelect from "./LanguageSelect";
 import { useTranslation } from "react-i18next";
-import { useAlert } from "../hooks/useAlert";
+import { AlertType, useAlert } from "../hooks/useAlert";
 import { useAction } from "../hooks/useAction";
 
-function notifyAll(showAlert: (message: string) => void) {
-  showAlert("Notifyyyyyy");
-  //console.log("Notifyyyyyyy");
-}
+const notifyAll = () => {
+  console.log("Notifyyyyyyy");
+};
 
 const FunctionalElements = new Map<string, ReactNode>([
   ["contacts", <Contacts />],
@@ -29,7 +28,7 @@ const AuthorizedPage = () => {
   }
   const [currPage, setPage] = useState("contacts");
   return (
-    <div>
+    <>
       <Header>
         {Array.from(FunctionalElements.keys()).map((key) => (
           <button
@@ -42,25 +41,39 @@ const AuthorizedPage = () => {
             {t(key + "Button")}
           </button>
         ))}
-        <button onClick={logout}>{t("logoutButton")}</button>
+        <button
+          onClick={() => {
+            showAlert({
+              message: t("confirmLogout"),
+              type: AlertType.CONFIRM,
+              continueAction: logout,
+            });
+          }}
+        >
+          {t("logoutButton")}
+        </button>
         <LanguageSelect
           onLanguageChange={(language) => {
             i18n.changeLanguage(language);
           }}
         ></LanguageSelect>
       </Header>
-      <div className="container primary-block">
+      <main className="container primary-block">
         <button
           className="notify-all"
           onClick={() => {
-            notifyAll(showAlert);
+            showAlert({
+              message: t("confirmNotify"),
+              type: AlertType.CONFIRM,
+              continueAction: notifyAll,
+            });
           }}
         >
           {t("notifyAll")}
         </button>
         {FunctionalElements.get(currPage)}
-      </div>
-    </div>
+      </main>
+    </>
   );
 };
 

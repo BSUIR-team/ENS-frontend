@@ -10,7 +10,7 @@ const UnauthorizedPage = () => {
   const [t, i18n] = useTranslation();
 
   return (
-    <div className="start-block">
+    <main className="start-block">
       {isRegistration ? (
         <Registration setRegistered={setRegistration} />
       ) : (
@@ -32,7 +32,7 @@ const UnauthorizedPage = () => {
           i18n.changeLanguage(language);
         }}
       ></LanguageSelect>
-    </div>
+    </main>
   );
 };
 

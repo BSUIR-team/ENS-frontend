@@ -7,6 +7,8 @@ import { useAction } from "../hooks/useAction";
 import { useTypedSelector } from "../hooks/useTypedSelector";
 import { Contact } from "../types/Contact";
 
+let counter = 0;
+
 const AddContact = () => {
   const showAlert = useAlert();
   const [t] = useTranslation();
@@ -19,14 +21,19 @@ const AddContact = () => {
 
   function addContact(e: FormEvent) {
     e.preventDefault();
+    if (name) {
+    }
     if (name && (phone || email)) {
       update({
         ...user,
-        contacts: [...user.contacts, new Contact(0, name, email, phone)],
+        contacts: [
+          ...user.contacts,
+          new Contact(counter++, name, email, phone),
+        ],
       });
-      showAlert("OK");
+      showAlert({ message: t("contactAdded"), type: AlertType.SUCCESS });
     } else {
-      showAlert("Not OK", AlertType.FAIL);
+      showAlert({ message: t("contactNotAdded"), type: AlertType.FAIL });
     }
   }
 

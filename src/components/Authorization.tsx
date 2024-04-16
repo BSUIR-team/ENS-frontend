@@ -22,7 +22,7 @@ const Authorization = ({ children }: Props) => {
     if (email && password) {
       logIn(new User(email, password));
     } else {
-      showAlert("Fields must be set", AlertType.FAIL);
+      showAlert({ message: "Fields must be set", type: AlertType.FAIL });
     }
   }
 

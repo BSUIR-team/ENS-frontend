@@ -9,7 +9,7 @@ const Header = ({ children }: Props) => {
     <header>
       <div className="container">
         <h1>Notification System</h1>
-        <div className="children">{children}</div>
+        <nav className="children">{children}</nav>
       </div>
     </header>
   );

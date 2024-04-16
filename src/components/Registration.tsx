@@ -12,7 +12,7 @@ interface Props {
 
 const Registration = ({ children, setRegistered }: Props) => {
   const [t] = useTranslation();
-  const [phone, setPhone] = useState("");
+  const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [repassword, setRepassword] = useState("");
@@ -21,17 +21,16 @@ const Registration = ({ children, setRegistered }: Props) => {
   function registerUser(e: FormEvent) {
     //console.log("register");
     e.preventDefault();
-    if (phone && email && password && repassword) {
+    if (name && email && password && repassword) {
       if (password == repassword) {
-        let user = new User(email, password, "", phone);
+        let user = new User(email, password, "", name);
         console.log(user);
-        showAlert(`${email} registered`);
         setRegistered(false);
       } else {
-        showAlert("Passwords must be equal", AlertType.FAIL);
+        showAlert({ message: "Passwords must be equal", type: AlertType.FAIL });
       }
     } else {
-      showAlert("Wrong credentials", AlertType.FAIL);
+      showAlert({ message: "Wrong credentials", type: AlertType.FAIL });
     }
   }
 
@@ -39,12 +38,12 @@ const Registration = ({ children, setRegistered }: Props) => {
     <form className="start-form" method="POST" onSubmit={registerUser}>
       <h2>{t("registrationHeader")}</h2>
       <Input
-        type="tel"
-        label={t("phoneNumber")}
-        name="phone"
-        placeholder="+375291488228"
+        type="text"
+        label={t("nameField")}
+        name="name"
+        placeholder="John"
         onChange={(e) => {
-          setPhone(e.currentTarget.value);
+          setName(e.currentTarget.value);
         }}
       />
       <Input

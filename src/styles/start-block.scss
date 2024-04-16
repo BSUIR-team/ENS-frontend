@@ -1,6 +1,7 @@
 @import './variables.scss';
 @import './forms.scss';
 @import './language-select.scss';
+@import './centered.scss';
 
 .start-block {
     width: 650px;
@@ -8,14 +9,7 @@
     border-radius: $border-radius;
     border: $border-width solid #333;
 
-    position: fixed;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    -webkit-transform: translate(-50%, -50%);
-    -moz-transform: translate(-50%, -50%);
-    -o-transform: translate(-50%, -50%);
-    -ms-transform: translate(-50%, -50%);
+    @include center;
 
     a {
         color: $start-form-elements-color;
