@@ -7,7 +7,7 @@ export const validatePhoneNumber = (phone: string) : boolean => {
 }
 
 export const validatePassword = (password: string) : boolean => {
-    return password.length >= 8 && password.length <= 128;
+    return password.length >= 6 && password.length <= 128;
 }
 
 export const validateName = (name: string) : boolean => {

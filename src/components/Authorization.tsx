@@ -5,6 +5,7 @@ import { useTranslation } from "react-i18next";
 import { useAction } from "../hooks/useAction";
 import { User } from "../types/User";
 import { AlertType, useAlert } from "../hooks/useAlert";
+import { validatePassword } from "../utils/validation";
 
 interface Props {
   children?: string;
@@ -19,7 +20,7 @@ const Authorization = ({ children }: Props) => {
 
   function authorizeUser(e: FormEvent) {
     e.preventDefault();
-    if (email && password) {
+    if (email && validatePassword(password)) {
       logIn(new User(email, password));
     } else {
       showAlert({ message: "Fields must be set", type: AlertType.FAIL });

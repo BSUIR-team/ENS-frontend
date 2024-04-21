@@ -16,7 +16,6 @@ interface ConfirmationAlert {
 export type AlertAction = MessageAlert | ConfirmationAlert;
 
 export const AlertContext = createContext((alert: AlertAction) => {
-    console.log(alert);
 });
   
 export const useAlert = () => {

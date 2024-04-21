@@ -4,6 +4,9 @@ import "../i18n";
 import { useTranslation } from "react-i18next";
 import { AlertType, useAlert } from "../hooks/useAlert";
 import { User } from "../types/User";
+import axios, { AxiosResponse } from "axios";
+import { REGISTER_URI } from "../resources/URIs";
+import { validateName, validatePassword } from "../utils/validation";
 
 interface Props {
   children?: string;
@@ -12,20 +15,28 @@ interface Props {
 
 const Registration = ({ children, setRegistered }: Props) => {
   const [t] = useTranslation();
-  const [name, setName] = useState("");
+  const [username, setName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [repassword, setRepassword] = useState("");
   const showAlert = useAlert();
 
-  function registerUser(e: FormEvent) {
+  async function registerUser(e: FormEvent) {
     //console.log("register");
     e.preventDefault();
-    if (name && email && password && repassword) {
+    if (validateName(username) && email && validatePassword(password)) {
       if (password == repassword) {
-        let user = new User(email, password, "", name);
-        console.log(user);
-        setRegistered(false);
+        let user = new User(email, password, "", username);
+        await axios
+          .post(REGISTER_URI, user)
+          .then((response: AxiosResponse<boolean, any>) => {
+            if (response.data) setRegistered(false);
+            else throw new Error();
+          })
+          .catch((e) => {
+            console.log(e);
+            showAlert({ type: AlertType.FAIL, message: "Failed to register" });
+          });
       } else {
         showAlert({ message: "Passwords must be equal", type: AlertType.FAIL });
       }
@@ -40,7 +51,7 @@ const Registration = ({ children, setRegistered }: Props) => {
       <Input
         type="text"
         label={t("nameField")}
-        name="name"
+        name="username"
         placeholder="John"
         onChange={(e) => {
           setName(e.currentTarget.value);

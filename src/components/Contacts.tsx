@@ -1,7 +1,7 @@
 import { useTranslation } from "react-i18next";
 import { useTypedSelector } from "../hooks/useTypedSelector";
 import { useAction } from "../hooks/useAction";
-import { useAlert } from "../hooks/useAlert";
+import { AlertType, useAlert } from "../hooks/useAlert";
 
 const Contacts = () => {
   const [t] = useTranslation();
@@ -14,7 +14,7 @@ const Contacts = () => {
       ...user,
       contacts: user.contacts.filter((e) => e.id != contactId),
     });
-    showAlert("OK");
+    showAlert({ type: AlertType.SUCCESS, message: "OK" });
   }
 
   return (

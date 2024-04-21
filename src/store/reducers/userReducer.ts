@@ -9,7 +9,9 @@ export const userReducer = (state: UserState = initialState, action: UserAction)
         case UserActions.WAIT:
             return action.payload;
         case UserActions.LOG_OUT:
-                return initialState;
+            return initialState;
+        case UserActions.ERROR:
+            return {...state, loading: false, error: action.message}
         default:
             return state;
     }

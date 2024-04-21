@@ -5,6 +5,7 @@ import { useTypedSelector } from "../hooks/useTypedSelector";
 import { AlertType, useAlert } from "../hooks/useAlert";
 import { useAction } from "../hooks/useAction";
 import { User } from "../types/User";
+import { validateName, validatePassword } from "../utils/validation";
 
 const PersonalInfo = () => {
   const [t] = useTranslation();
@@ -13,7 +14,7 @@ const PersonalInfo = () => {
   const { update } = useAction();
 
   const [isDisabled, setDisabled] = useState(true);
-  const [name, setName] = useState(user.name);
+  const [name, setName] = useState(user.username);
   const [email, setEmail] = useState(user.email);
   const [password, setPassword] = useState(user.password);
   const [repassword, setRepassword] = useState(user.password);
@@ -21,7 +22,7 @@ const PersonalInfo = () => {
 
   function editPersonalInfo(e: FormEvent) {
     e.preventDefault();
-    if (name && email && password && repassword && message) {
+    if (validateName(name) && email && validatePassword(password) && message) {
       if (password == repassword) {
         update(new User(email, password, message, name, user.contacts));
         setDisabled(true);
@@ -34,7 +35,7 @@ const PersonalInfo = () => {
   }
 
   function discardChanges() {
-    setName(user.name);
+    setName(user.username);
     setEmail(user.email);
     setPassword(user.password);
     setRepassword(user.password);

@@ -6,6 +6,7 @@ import AddContactsFromFile from "./AddContactsFromFile";
 import { useAction } from "../hooks/useAction";
 import { useTypedSelector } from "../hooks/useTypedSelector";
 import { Contact } from "../types/Contact";
+import { validateName, validatePhoneNumber } from "../utils/validation";
 
 let counter = 0;
 
@@ -21,14 +22,13 @@ const AddContact = () => {
 
   function addContact(e: FormEvent) {
     e.preventDefault();
-    if (name) {
-    }
-    if (name && (phone || email)) {
+    let phoneValue = validatePhoneNumber(phone) ? phone : "";
+    if (validateName(name) && (phoneValue || email)) {
       update({
         ...user,
         contacts: [
           ...user.contacts,
-          new Contact(counter++, name, email, phone),
+          new Contact(counter++, name, email, phoneValue),
         ],
       });
       showAlert({ message: t("contactAdded"), type: AlertType.SUCCESS });
