@@ -1,5 +1,12 @@
 # Emergency Notification System Frontend
 
-# Technologies used: React + TypeScript + Vite + SCSS
+# Technologies used
 
-The development is still in progress...
+Vite
+React
+TypeScript
+SCSS
+Redux
+Axios
+
+#The development is still in progress...
