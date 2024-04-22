@@ -1,4 +1,4 @@
-import { FormEvent, useState } from "react";
+import { FormEvent, useEffect, useState } from "react";
 import Input from "./Input";
 import { useTranslation } from "react-i18next";
 import { useTypedSelector } from "../hooks/useTypedSelector";
@@ -19,6 +19,13 @@ const PersonalInfo = () => {
   const [password, setPassword] = useState(user.password);
   const [repassword, setRepassword] = useState(user.password);
   const [message, setMessage] = useState(user.message);
+
+  const failMessage = useTypedSelector((state) => state.user.error);
+  useEffect(() => {
+    if (failMessage != undefined && failMessage) {
+      showAlert({ type: AlertType.FAIL, message: t(failMessage) });
+    }
+  }, [failMessage]);
 
   function editPersonalInfo(e: FormEvent) {
     e.preventDefault();

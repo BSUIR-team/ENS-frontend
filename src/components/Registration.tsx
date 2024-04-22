@@ -21,27 +21,25 @@ const Registration = ({ children, setRegistered }: Props) => {
   const [repassword, setRepassword] = useState("");
   const showAlert = useAlert();
 
-  async function registerUser(e: FormEvent) {
-    //console.log("register");
+  function registerUser(e: FormEvent) {
     e.preventDefault();
     if (validateName(username) && email && validatePassword(password)) {
       if (password == repassword) {
         let user = new User(email, password, "", username);
-        await axios
+        axios
           .post(REGISTER_URI, user)
           .then((response: AxiosResponse<boolean, any>) => {
-            if (response.data) setRegistered(false);
-            else throw new Error();
+            if (!response.data) throw new Error();
           })
-          .catch((e) => {
-            console.log(e);
-            showAlert({ type: AlertType.FAIL, message: "Failed to register" });
+          .catch(() => {
+            showAlert({ type: AlertType.FAIL, message: t("failedRegister") });
           });
+        setRegistered(false);
       } else {
-        showAlert({ message: "Passwords must be equal", type: AlertType.FAIL });
+        showAlert({ message: t("passwordsMustMatch"), type: AlertType.FAIL });
       }
     } else {
-      showAlert({ message: "Wrong credentials", type: AlertType.FAIL });
+      showAlert({ message: t("incorrectFields"), type: AlertType.FAIL });
     }
   }
 

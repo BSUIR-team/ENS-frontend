@@ -1,4 +1,4 @@
-import { FormEvent, useState } from "react";
+import { FormEvent, useEffect, useState } from "react";
 import Input from "./Input";
 import "../i18n";
 import { useTranslation } from "react-i18next";
@@ -6,6 +6,7 @@ import { useAction } from "../hooks/useAction";
 import { User } from "../types/User";
 import { AlertType, useAlert } from "../hooks/useAlert";
 import { validatePassword } from "../utils/validation";
+import { useTypedSelector } from "../hooks/useTypedSelector";
 
 interface Props {
   children?: string;
@@ -18,12 +19,19 @@ const Authorization = ({ children }: Props) => {
   const [password, setPassword] = useState("");
   const showAlert = useAlert();
 
+  const failMessage = useTypedSelector((state) => state.user.error);
+  useEffect(() => {
+    if (failMessage != undefined && failMessage) {
+      showAlert({ type: AlertType.FAIL, message: t(failMessage) });
+    }
+  }, [failMessage]);
+
   function authorizeUser(e: FormEvent) {
     e.preventDefault();
     if (email && validatePassword(password)) {
       logIn(new User(email, password));
     } else {
-      showAlert({ message: "Fields must be set", type: AlertType.FAIL });
+      showAlert({ message: t("incorrectFields"), type: AlertType.FAIL });
     }
   }
 

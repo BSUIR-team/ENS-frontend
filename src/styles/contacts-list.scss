@@ -14,8 +14,8 @@
     }
 
     h3 {
+        margin: 10px 10px;
         font-size: $common-header-font-size;
-        margin: 0;
     }
 
     li{
@@ -24,9 +24,13 @@
         border-radius: $border-radius;
         margin: 10px 0;
         padding: 10px;
-    }
 
-    p {
-        margin-bottom: 10px;
+        h3 {
+            margin: 0;
+        }
+
+        p {
+            margin-bottom: 10px;
+        }
     }
 }

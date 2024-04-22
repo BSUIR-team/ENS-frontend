@@ -20,6 +20,7 @@ export const logIn = (user: User) => {
                 dispatch({type: UserActions.LOG_IN, payload: {user: userInfo, logged: true, loading: false}});
             }).catch(()=> {
                 throw new Error();
+                // dispatch({type: UserActions.LOG_IN, payload: {user: user, logged: true, loading: false}});
             })
         }
         catch(e) {
@@ -81,5 +82,11 @@ export const updateFromFile = (user: User, contacts: File) => {
         catch(e) {
             dispatch({type: UserActions.ERROR, message: "failedUpdate"});        
         }
+    }
+}
+
+export const clearError = () => {
+    return (dispatch: Dispatch<UserAction>) => {
+        dispatch({type: UserActions.ERROR, message: ""});
     }
 }

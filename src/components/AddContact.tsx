@@ -1,4 +1,4 @@
-import { FormEvent, useState } from "react";
+import { FormEvent, useEffect, useState } from "react";
 import Input from "./Input";
 import { useTranslation } from "react-i18next";
 import { AlertType, useAlert } from "../hooks/useAlert";
@@ -19,6 +19,13 @@ const AddContact = () => {
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [phone, setPhone] = useState("");
+
+  const failMessage = useTypedSelector((state) => state.user.error);
+  useEffect(() => {
+    if (failMessage != undefined && failMessage) {
+      showAlert({ type: AlertType.FAIL, message: t(failMessage) });
+    }
+  }, [failMessage]);
 
   function addContact(e: FormEvent) {
     e.preventDefault();

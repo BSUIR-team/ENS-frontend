@@ -14,12 +14,13 @@ const Contacts = () => {
       ...user,
       contacts: user.contacts.filter((e) => e.id != contactId),
     });
-    showAlert({ type: AlertType.SUCCESS, message: "OK" });
+    showAlert({ type: AlertType.SUCCESS, message: t("contactRemoved") });
   }
 
   return (
     <ul className="contacts-list">
       <h2>{t("contactsButton")}</h2>
+      {user.contacts.length == 0 && <h3>{t("noContacts")}</h3>}
       {user.contacts.map((contact) => (
         <li key={contact.id}>
           <h3>{contact.name}</h3>

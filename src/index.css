@@ -518,8 +518,8 @@ input:disabled {
   margin-bottom: 20px;
 }
 .contacts-list h3 {
+  margin: 10px 10px;
   font-size: 40px;
-  margin: 0;
 }
 .contacts-list li {
   width: 100%;
@@ -528,7 +528,10 @@ input:disabled {
   margin: 10px 0;
   padding: 10px;
 }
-.contacts-list p {
+.contacts-list li h3 {
+  margin: 0;
+}
+.contacts-list li p {
   margin-bottom: 10px;
 }
 

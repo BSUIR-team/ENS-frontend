@@ -2,6 +2,7 @@ import { ReactNode, useState } from "react";
 import { AlertAction, AlertContext, AlertType } from "../hooks/useAlert";
 import MessageBox from "./MessageBox";
 import Confirmation from "./Confirmation";
+import { useAction } from "../hooks/useAction";
 
 interface Props {
   children: ReactNode;
@@ -12,10 +13,11 @@ export const Alert = ({ children }: Props) => {
   const [message, setMessage] = useState("");
   const [type, setType] = useState(AlertType.SUCCESS);
   const [action, setAction] = useState(() => () => {});
-
+  const { clearError } = useAction();
   let timeout = 0;
 
   const showAlert = (newAlert: AlertAction) => {
+    clearError();
     clearTimeout(timeout);
     setMessage(newAlert.message);
     setType(newAlert.type);
