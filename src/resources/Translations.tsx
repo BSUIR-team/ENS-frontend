@@ -54,6 +54,7 @@ const Translations = {
       noTemplatesYet: "Ещё нет шаблонов",
       send: "Отправить",
       removeTemplateConfirm: "Вы уверены, что хотите удалить этот шаблон?",
+      failedNotify: "Не удалось оповестить, используя данный шаблон",
     },
   },
   en: {
@@ -111,6 +112,7 @@ const Translations = {
       noTemplatesYet: "No templates yet",
       send: "Send",
       removeTemplateConfirm: "Are you sure you want to delete the template?",
+      failedNotify: "Failed to notify using the template",
     },
   },
 };

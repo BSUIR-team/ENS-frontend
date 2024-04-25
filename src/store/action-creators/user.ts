@@ -308,7 +308,7 @@ export const notify = (user: User, template: Template) => {
             }).catch(()=>{throw new Error()})
         }
         catch(e) {
-            dispatch({type: UserActions.ERROR, message: "failedUpdate"});
+            dispatch({type: UserActions.ERROR, message: "failedNotify"});
         }
     }
 }

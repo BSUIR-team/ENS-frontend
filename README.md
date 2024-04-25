@@ -9,4 +9,4 @@ SCSS
 Redux
 Axios
 
-# The development is still in progress...
+# The development is finished
