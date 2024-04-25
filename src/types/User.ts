@@ -1,4 +1,5 @@
 import { Contact } from "./Contact";
+import { Template } from "./Template";
 
 export enum UserActions {LOG_IN = "LOG_IN", LOG_OUT = "LOG_OUT", UPDATE = "UPDATE", WAIT = "WAIT", ERROR = "ERROR"};
 
@@ -38,15 +39,15 @@ export type UserAction = UserLogInAction | UserLogOutAction | UserUpdateAction |
 export class User {
     readonly email: string;
     readonly password: string;
-    readonly message: string;
     readonly username: string;
     readonly contacts: Contact[];
+    readonly templates: Template[];
 
-    constructor(email: string, password: string, message: string = "", username: string = "", contacts: Contact[] = []) {
+    constructor(email: string, password: string, username: string = "", contacts: Contact[] = [], templates: Template[] = []) {
         this.email = email;
         this.password = password;
-        this.message = message;
         this.username = username;
         this.contacts = contacts;
+        this.templates = templates;
     }
 }

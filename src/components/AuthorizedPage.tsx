@@ -7,10 +7,7 @@ import LanguageSelect from "./LanguageSelect";
 import { useTranslation } from "react-i18next";
 import { AlertType, useAlert } from "../hooks/useAlert";
 import { useAction } from "../hooks/useAction";
-
-const notifyAll = () => {
-  console.log("Notifyyyyyyy");
-};
+import ChooseTemplate from "./ChooseTemplate";
 
 const FunctionalElements = new Map<string, ReactNode>([
   ["contacts", <Contacts />],
@@ -27,6 +24,7 @@ const AuthorizedPage = () => {
     logOut();
   }
   const [currPage, setPage] = useState("contacts");
+  const [isNotifying, setNotifying] = useState(false);
   return (
     <>
       <Header>
@@ -62,17 +60,20 @@ const AuthorizedPage = () => {
         <button
           className="notify-all"
           onClick={() => {
-            showAlert({
-              message: t("confirmNotify"),
-              type: AlertType.CONFIRM,
-              continueAction: notifyAll,
-            });
+            setNotifying(true);
           }}
         >
           {t("notifyAll")}
         </button>
         {FunctionalElements.get(currPage)}
       </main>
+      {isNotifying && (
+        <ChooseTemplate
+          onClose={() => {
+            setNotifying(false);
+          }}
+        />
+      )}
     </>
   );
 };

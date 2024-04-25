@@ -7,13 +7,9 @@ const Contacts = () => {
   const [t] = useTranslation();
   const showAlert = useAlert();
   const user = useTypedSelector((state) => state.user.user);
-  const { update } = useAction();
-
+  const { deleteContact } = useAction();
   function removeContact(contactId: number) {
-    update({
-      ...user,
-      contacts: user.contacts.filter((e) => e.id != contactId),
-    });
+    deleteContact(user, contactId);
     showAlert({ type: AlertType.SUCCESS, message: t("contactRemoved") });
   }
 
@@ -25,7 +21,7 @@ const Contacts = () => {
         <li key={contact.id}>
           <h3>{contact.name}</h3>
           <p>
-            {t("phoneNumber")}: {contact.phone}
+            {t("phoneNumber")}: {contact.phoneNumber}
           </p>
           <p>
             {t("email")}: {contact.email}

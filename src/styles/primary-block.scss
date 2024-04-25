@@ -2,6 +2,7 @@
 @import './forms.scss';
 @import './contacts-list.scss';
 @import './confirmation-block.scss';
+@import './templates-list.scss';
 
 .primary-block {
     justify-content: center;
@@ -16,6 +17,7 @@
     }
 
     .edit-personal-info {
+        margin: 10px 0;
         width: 95%;;
     }
 

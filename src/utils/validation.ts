@@ -13,3 +13,11 @@ export const validatePassword = (password: string) : boolean => {
 export const validateName = (name: string) : boolean => {
     return name.length > 2 && name.length < 128;
 }
+
+export const validateTemplateName = (name: string) : boolean => {
+    return name.length > 5 && name.length < 128;
+} 
+
+export const validateTemplateContent = (content: string) : boolean => {
+    return content.length > 3 && content.length < 128;
+}

@@ -25,7 +25,7 @@ const Registration = ({ children, setRegistered }: Props) => {
     e.preventDefault();
     if (validateName(username) && email && validatePassword(password)) {
       if (password == repassword) {
-        let user = new User(email, password, "", username);
+        let user = new User(email, password, username);
         axios
           .post(REGISTER_URI, user)
           .then((response: AxiosResponse<boolean, any>) => {

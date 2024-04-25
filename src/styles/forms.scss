@@ -1,6 +1,7 @@
 @import './button.scss';
 @import './input.scss';
 @import './variables.scss';
+@import './centered.scss';
 
 @mixin form-controls($control-color, $control-width) {
 
@@ -118,4 +119,55 @@
     }
 
     @include form-controls($primary-page-color, $controls-width);
+}
+
+.template-editor {
+    display: block;
+    @include center;
+    @include form-controls($primary-page-color, 100%);
+    width: 650px;
+    background-color: $white-color;
+    padding: 20px;
+    border-radius: $border-radius;
+    border: $border-width solid $primary-page-color;
+
+    input {
+        border-color: $passive-color;
+    }
+
+    input[type=checkbox] {
+        display: inline-block;
+        width: 20px;
+    }
+
+    textarea {
+        font-size: $basic-font-size;
+        width: 100%;
+        border-radius: $border-radius;
+        outline: none;
+        margin-bottom: 10px;
+        box-sizing: border-box;
+        display: block;
+        border: $border-width solid $passive-color;
+        padding: $control-padding;
+        transition: $transition-time linear;
+    }
+
+    textarea:focus:enabled, textarea:hover:enabled {
+        border-color: $primary-page-color;
+    }
+
+    .close-button {
+        margin: 0;
+        margin-right: 5px;
+        margin-bottom: 10px;
+        width: 36px;
+        padding: 0 5px;
+        border-radius: 50%;
+        float: right;
+        i {
+            margin: 0;
+            padding: 0;
+        }
+    }
 }

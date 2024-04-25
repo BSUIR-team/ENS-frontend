@@ -1,0 +1,82 @@
+@import './variables.scss';
+@import './centered.scss';
+
+.modal-list {
+    @include center;
+    width: 650px;
+    padding: 10px;
+    background-color: $white-color;
+    border-radius: $border-radius;
+    border: $border-width solid $primary-page-color;
+    .close-button {
+        margin: 0;
+        margin-right: 5px;
+        margin-bottom: 10px;
+        width: 36px;
+        padding: 0 5px;
+        background-color: $primary-page-color;
+        color: $white-color;
+        border-radius: 50%;
+        float: right;
+        i {
+            margin: 0;
+            padding: 0;
+        }
+    }
+
+    .close-button:hover {
+        background-color: rgba($color: $white-color, $alpha: 0);
+        color: $primary-page-color;
+    }
+}
+
+.page-list {
+    margin: 0 auto;
+    h2 {
+        text-align: center;
+    }
+    .buttons {
+        display: flex;
+        flex-wrap: nowrap;
+        justify-content: space-between;
+        width: 50%;
+    }
+    width: 95%;
+}
+
+.templates-list {
+    p {
+        font-size: $basic-font-size;
+        text-align: center;
+    }
+    ul {
+        padding: 0;
+        list-style: none;
+        li {
+            padding: 5px;
+            border: $border-width solid $passive-color;
+            border-radius: $border-radius;
+            margin-top: 10px;
+            display: flex;
+            flex-wrap: nowrap;
+            justify-content: space-between;
+            align-items: center;
+            button {
+                background-color: $primary-page-color;
+                color: $white-color;
+            }
+            button:hover {
+                background-color: rgba($color: $white-color, $alpha: 0);
+                color: $primary-page-color;
+            }
+        }
+    }
+
+    h2 {
+        margin: 0;
+        margin-top: 10px;
+    }
+    h3 {
+        margin: 0;
+    }
+}

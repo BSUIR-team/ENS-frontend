@@ -8,12 +8,10 @@ import { useTypedSelector } from "../hooks/useTypedSelector";
 import { Contact } from "../types/Contact";
 import { validateName, validatePhoneNumber } from "../utils/validation";
 
-let counter = 0;
-
 const AddContact = () => {
   const showAlert = useAlert();
   const [t] = useTranslation();
-  const { update } = useAction();
+  const { addContact } = useAction();
   const user = useTypedSelector((state) => state.user.user);
 
   const [name, setName] = useState("");
@@ -27,17 +25,11 @@ const AddContact = () => {
     }
   }, [failMessage]);
 
-  function addContact(e: FormEvent) {
+  function add(e: FormEvent) {
     e.preventDefault();
     let phoneValue = validatePhoneNumber(phone) ? phone : "";
     if (validateName(name) && (phoneValue || email)) {
-      update({
-        ...user,
-        contacts: [
-          ...user.contacts,
-          new Contact(counter++, name, email, phoneValue),
-        ],
-      });
+      addContact(user, new Contact(0, name, email, phone));
       showAlert({ message: t("contactAdded"), type: AlertType.SUCCESS });
     } else {
       showAlert({ message: t("contactNotAdded"), type: AlertType.FAIL });
@@ -46,7 +38,7 @@ const AddContact = () => {
 
   return (
     <>
-      <form className="add-contact-form" method="POST" onSubmit={addContact}>
+      <form className="add-contact-form" method="POST" onSubmit={add}>
         <h2>{t("newContact")}</h2>
         <Input
           type="text"

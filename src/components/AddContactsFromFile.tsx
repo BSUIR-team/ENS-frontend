@@ -1,16 +1,20 @@
 import { useTranslation } from "react-i18next";
 import Input from "./Input";
 import { FormEvent, useState } from "react";
+import { useAction } from "../hooks/useAction";
+import { useTypedSelector } from "../hooks/useTypedSelector";
 
 const AddContactsFromFile = () => {
   const [t] = useTranslation();
 
   const [file, setFile] = useState<File | null>(null);
+  const user = useTypedSelector((state) => state.user.user);
+  const { updateFromFile } = useAction();
 
   function addContacts(e: FormEvent) {
     e.preventDefault();
     if (file != null) {
-      console.log(file);
+      updateFromFile(user, file);
     }
   }
 

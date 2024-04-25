@@ -6,19 +6,22 @@ import { AlertType, useAlert } from "../hooks/useAlert";
 import { useAction } from "../hooks/useAction";
 import { User } from "../types/User";
 import { validateName, validatePassword } from "../utils/validation";
+import AddTemplate from "./AddTemplate";
+import TemplatesList from "./TemplatesList";
+import { Template } from "../types/Template";
 
 const PersonalInfo = () => {
   const [t] = useTranslation();
   const showAlert = useAlert();
   const user = useTypedSelector((state) => state.user.user);
-  const { update } = useAction();
+  const { update, addTemplate } = useAction();
 
   const [isDisabled, setDisabled] = useState(true);
+  const [addingTemplate, setAddignTemplate] = useState(false);
   const [name, setName] = useState(user.username);
   const [email, setEmail] = useState(user.email);
   const [password, setPassword] = useState(user.password);
   const [repassword, setRepassword] = useState(user.password);
-  const [message, setMessage] = useState(user.message);
 
   const failMessage = useTypedSelector((state) => state.user.error);
   useEffect(() => {
@@ -26,12 +29,11 @@ const PersonalInfo = () => {
       showAlert({ type: AlertType.FAIL, message: t(failMessage) });
     }
   }, [failMessage]);
-
   function editPersonalInfo(e: FormEvent) {
     e.preventDefault();
-    if (validateName(name) && email && validatePassword(password) && message) {
+    if (validateName(name) && email && validatePassword(password)) {
       if (password == repassword) {
-        update(new User(email, password, message, name, user.contacts));
+        update(new User(email, password, name, user.contacts));
         setDisabled(true);
       } else {
         showAlert({ message: t("passwordsMustMatch"), type: AlertType.FAIL });
@@ -46,7 +48,6 @@ const PersonalInfo = () => {
     setEmail(user.email);
     setPassword(user.password);
     setRepassword(user.password);
-    setMessage(user.message);
   }
 
   return (
@@ -103,18 +104,6 @@ const PersonalInfo = () => {
             }}
           />
         )}
-        <label>
-          {t("messageSample")}
-          <textarea
-            className="form-control"
-            name="messageSample"
-            disabled={isDisabled}
-            value={message}
-            onChange={(e) => {
-              setMessage(e.currentTarget.value);
-            }}
-          ></textarea>
-        </label>
         <button type="submit" disabled={isDisabled}>
           {t("saveButton")}
         </button>
@@ -127,9 +116,27 @@ const PersonalInfo = () => {
             discardChanges();
           }
         }}
+        disabled={true}
       >
         {isDisabled ? t("editButton") : t("cancelActionButton")}
       </button>
+      <button
+        className="edit-personal-info"
+        onClick={() => setAddignTemplate(true)}
+      >
+        {t("addTemplate")}
+      </button>
+      <TemplatesList templates={user.templates} />
+      {addingTemplate && (
+        <AddTemplate
+          onClose={() => {
+            setAddignTemplate(false);
+          }}
+          onSubmit={(template: Template) => {
+            addTemplate(user, template);
+          }}
+        />
+      )}
     </>
   );
 };
