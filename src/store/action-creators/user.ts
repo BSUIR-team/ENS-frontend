@@ -248,25 +248,7 @@ export const updateTemplate = (user:User, template: Template) => {
                 dispatch({type: UserActions.LOG_OUT})
             }
             dispatch({type: UserActions.WAIT, payload: {user: user, logged: true, loading: true}});
-            // await axios.put(TEMPLATES_URI, {title: template.title, content: template.content}, {
-            //     headers: {
-            //         Authorization: jwt
-            //     },
-            //     timeout: TIMEOUT_MILLIS
-            // }).then((response: AxiosResponse<Template, any>) => {
-            //     return response.data;
-            // }).then(async (templateInfo: Template) => {
-            //     await axios.put(TEMPLATES_URI + templateInfo.id + "/recipients/", {recipientIds: templateInfo.recipientIds}, {
-            //         headers: {
-            //             Authorization: jwt
-            //         },
-            //         timeout: TIMEOUT_MILLIS
-            //     }).then((response: AxiosResponse<Contact[], any>) => {
-            //         templateInfo = {...templateInfo, recipientIds: response.data};
-            //         user = {...user, templates: [...user.templates, templateInfo]};
-            //         dispatch({type: UserActions.UPDATE, payload: {user: user, logged: true, loading: false}});
-            //     }).catch(()=>{throw new Error()})
-            // })
+            
             let ids = template.recipientIds.map(e => e.id);
             await axios.put(TEMPLATES_RECIPIENTS_URI(template.id), {recipientIds: ids}, {
                 headers: {

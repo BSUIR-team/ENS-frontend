@@ -20,7 +20,8 @@ const UnauthorizedPage = () => {
         {isRegistration ? t("accountAlreadyExists") : t("noAccountYet")}
         <a
           href="#"
-          onClick={() => {
+          onClick={(e) => {
+            e.preventDefault();
             setRegistration(!isRegistration);
           }}
         >
